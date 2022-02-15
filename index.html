@@ -210,7 +210,7 @@
      * @return stripo configuration from config.json.
     */
    window.addEventListener("message", (event) => {
-        userContextConfiguration.loadUserContext(message).then(res => {
+        userContextConfiguration.loadUserContext(event.data).then(res => {
             EMAILConfiguration.loadStripoConfiguration().then(respose => {
                 EMAILInitialization.loadTemplate(EMAILInitialization.initPlugin);
             }).catch(err => {
