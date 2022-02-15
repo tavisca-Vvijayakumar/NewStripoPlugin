@@ -1,0 +1,43 @@
+    [{
+    "category": "Flight detail",
+    "entries": [
+        {
+            "label": "Flight Name",
+            "value": "{{FlightName}}"
+        },
+        {
+            "label": "Flight Number",
+            "value": "{{FlightNumber}}"
+        },
+        {
+            "label": "Depart",
+            "value": "{{Departat}}"
+        },
+        {
+            "label": "Arrive",
+            "value": "{{Arriveat}}"
+        },
+
+        {
+            "label": "Airport/Terminal",
+            "value": "{{Airport/Terminal}}"
+        }
+    ]
+},
+{
+    "category": "Hotel detail",
+    "entries": [
+        {
+            "label": "Hotel Name",
+            "value": "air india"
+        },
+        {
+            "label": "Hotel Address",
+            "value": "EK 345"
+        },
+        {
+            "label": "Landmark",
+            "value": "10 0ct 21/10:30"
+        }
+    ]
+}]

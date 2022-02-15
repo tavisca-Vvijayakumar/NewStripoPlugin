@@ -1,3 +1,4 @@
+
 {
     "Stripo": {
         "DefaultTemplate": {
@@ -10,5 +11,9 @@
     },
     "ContentStack": {
         "baseUrl": "https://api.contentstack.io/v3/"
+    },
+    "EmailRenderApi":{
+        "baseUrl": "https://localhost:44389",
+        "setEmailRenderApiasDefaul": false
     }
 }

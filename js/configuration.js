@@ -1,5 +1,5 @@
 import { EMAILUtility } from './utility.js';
-import { CONFIG_JSON_PATH } from './constant.js';
+import { CONFIG_JSON_PATH, MERGE_TAG_JSON_PATH } from './constant.js';
 
 var Configuration = {};
 
@@ -31,6 +31,11 @@ var EMAILConfiguration = {
         Configuration = fetchPromise;
         return "ok";
     },
+
+    loadMergeTags: async function () {
+        var mergeTags = await EMAILUtility.getConfiguration(MERGE_TAG_JSON_PATH);
+        return mergeTags;
+    }
 
 }
 

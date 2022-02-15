@@ -34,10 +34,10 @@ var EMAILUtility = {
         var req = new XMLHttpRequest();
         req.onreadystatechange = function () {
             if (req.readyState === HTTP_READY_STATE && req.status === HTTP_SUCCESS_CODE) {
-                loader.style.opacity = 0;
-                setTimeout(function () {
-                    loader.style.display = "none";
-                }, 1200);
+                // loader.style.opacity = 0;
+                // setTimeout(function () {
+                //     loader.style.display = "none";
+                // }, 1200);
                 callback(req.responseText);
             } else if (req.readyState === HTTP_READY_STATE && req.status !== HTTP_SUCCESS_CODE) {
                 console.error('Can not complete request. Please check you entered a valid PLUGIN_ID and SECRET_KEY values');
@@ -62,12 +62,6 @@ var EMAILUtility = {
 
     createFetchRequest: async function name(entry_url, http_headers, http_method, http_data = undefined) {
 
-        // loader.style.opacity = 1;
-        // loader.style.display = "block";
-        // setTimeout(function () {
-        //     loader.style.display = "none";
-        // }, 800);
-
         var options = null;
 
         if (http_data === undefined) {
@@ -91,7 +85,7 @@ var EMAILUtility = {
             throw new Error(`HTTP error! status: ${response.status}`)
         }
 
-        if (http_method === "GET") {
+        if (http_method === "GET" || http_method == "POST") {
             return response.json();
         }
 
@@ -106,6 +100,23 @@ var EMAILUtility = {
         };
 
         return header;
+    },
+
+    getEmailRenderRequestHeader: function (methodType) {
+        if (methodType == "GET") {
+            var header = {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' //CONTENT_TYPE,
+            };
+
+            return header;
+        }
+        else {
+            var header = {
+                'Content-Type': 'application/json; charset=UTF-8'
+            };
+
+            return header;
+        }
     },
 
     showSuccessErrorMessage: function (message, backgroundColor) {
@@ -125,70 +136,8 @@ var EMAILUtility = {
                 }, 1000);
             }
         }, 200);
-    },
-
-    GetMergTags: async function name(entry_url, http_data, http_method) {
-       let response = await fetch(entry_url)
-       if (!response.ok) {
-        loader.style.display = "none";
-        throw new Error(`HTTP error! status: ${response.status}`)
-    }
-
-    if (http_method === "GET") {
-        return response.json();
-    }
-
-    return HTTP_SUCCESS_CODE; 
-       
     }
 }
-
-
-
-// var MyObj = 
-//     [{
-//     "category": "Flight detail",
-//     "entries": [
-//         {
-//             "label": "Flight Name",
-//             "value": "{{FlightName}}",
-//         },
-//         {
-//             "label": "Flight Number",
-//             "value": "{{FlightNumber}}"
-//         },
-//         {
-//             "label": "Depart",
-//             "value": "{{Departat}}"
-//         },
-//         {
-//             "label": "Arrive",
-//             "value": "{{Arriveat}}"
-//         },
-
-//         {
-//             "label": "Airport/Terminal",
-//             "value": "{{Airport/Terminal}}"
-//         },
-//     ]
-// },
-// {
-//     "category": "Hotel detail",
-//     "entries": [
-//         {
-//             "label": "Hotel Name",
-//             "value": "air india",
-//         },
-//         {
-//             "label": "Hotel Address",
-//             "value": "EK 345"
-//         },
-//         {
-//             "label": "Landmark",
-//             "value": "10 0ct 21/10:30"
-//         }
-//     ]
-// }]
 
 export { EMAILUtility }
 
