@@ -98,9 +98,7 @@ var externalPreviewPopup;
         iframeMobile.contentWindow.document.close();
     },
 
-    // return {
-    //     openPreviewPopup: openPreviewPopup
-    // };
+    
     }
     /**
      * Desc : Back to parent page functionality
