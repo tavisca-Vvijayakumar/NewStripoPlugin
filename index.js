@@ -12,10 +12,32 @@ var isSaved = false; var mergeTags;
 
 $(document).ready(function () {
     modifyLoaderSection();
+    document.getElementById('alert-modal').style.display = 'none';
     window.addEventListener("resize", () => {
         document.body.querySelector(".cls-left-side-bottom-loader").style.height = "";
     }, true
     );
+    document.getElementById('codeEditor').addEventListener('click', () => {
+        if (document.getElementById('codeEditor').classList.contains('cls-btn-pressed')) {
+            document.getElementById('codeEditor').classList.remove('cls-btn-pressed');
+        }
+        else {
+            document.getElementById('codeEditor').classList.add('cls-btn-pressed');
+        }
+    })
+    let setTimeInterval = setInterval(() => {
+        if (document.querySelector("#saveBtn") != null) {
+            console.log(document.querySelector("#saveBtn"));
+            //    clearInterval(setTimeInterval);
+            document.querySelector("#saveBtn").addEventListener('click', function (data) {
+                document.querySelector('.cls-alert-container').firstElementChild.remove();
+                window.StripoApi.getTemplate(function (html, css) {
+                    saveTemplateToContentStack(html)
+                    isSaved = true;
+                })
+            });
+        }
+    }, 1000);
     createCustomTiles();
 });
 var EMAILInitialization = {
@@ -166,7 +188,6 @@ var loadContentBlocksGroup = async function () {
                 "locale": element.locale,
                 "multilinecontent": element.multi_line
             }
-
             contentBlockGroupList.push(group);
         });
 
@@ -246,8 +267,8 @@ async function getTemplateFromEntry() {
 async function getTemplateFromContentStack() {
     var queryParameter = {
         locale: usercontext.locale,
-        version:usercontext.version
-        
+        version: usercontext.version
+
     }
     //  var url = `${Configuration.ContentStack.baseUrl}` + 'content_types/' + `${usercontext.contentTypeId}`
     //    + '/entries/' + `${usercontext.entryId}?` + addQueryParametersToContentStackUrl(queryParameter);
@@ -310,44 +331,48 @@ async function saveTemplateToContentStack(htmltext) {
         htmltext = doc.documentElement.outerHTML;
     }
     var response = retrieveContentBlockContentFromHTML(htmltext);
-    var data = {
-        "entry": {
-            "custom": "",
-            "multi_line": response,
-            "full_html_content": htmltext,
-            "tags": [],
-            //TODO Need to pass locale from stripo
-            "locale": "en-us"
+    var saveurl = "";
+    if (Configuration.EmailRenderApi.setEmailRenderApiasDefaul == false) {
+        var data = {
+            "entry": {
+                "custom": "",
+                "multi_line": response,
+                "full_html_content": htmltext,
+                "tags": [],
+                //TODO Need to pass locale from stripo
+                "locale": "en-us"
+            }
+        };
+
+        saveurl = `${Configuration.ContentStack.baseUrl}` + 'content_types/' + `${usercontext.contentTypeId}` + '/entries/' + `${usercontext.entryId}` + '?version=' + `${usercontext.version}`;
+    }
+    else {
+        //Save through tavisca API
+        var queryParameter = {
+            contentType: usercontext.contentTypeId,
+            entryId: usercontext.entryId,
+            version: usercontext.version
         }
-    };
+        var response = retrieveContentBlockContentFromHTML(htmltext);
+        var data = {
+            "Locale": usercontext.locale,
+            "MultiLine": response,
+            "FullHtmlContent": htmltext
+        };
 
-    var url = `${Configuration.ContentStack.baseUrl}` + 'content_types/' + `${usercontext.contentTypeId}` + '/entries/' + `${usercontext.entryId}`+'?version='+`${usercontext.version}`;
-
-    //Save through tavisca API
-    // var queryParameter = {
-    //     contentType: usercontext.contentTypeId,
-    //     entryId: usercontext.entryId,
-    //     version:usercontext.version
-    // }
-    // var response = retrieveContentBlockContentFromHTML(htmltext);
-    // var data = {
-    //         "Locale": usercontext.locale,
-    //         "MultiLine": response,
-    //         "FullHtmlContent": htmltext 
-    // };
-
-    // var url = `${Configuration.EmailRenderApi.baseUrl}`+`${Configuration.EmailRenderApi.templatecontroller}`
-    //                                 + addQueryParametersToContentStackUrl(queryParameter);
-
+        saveurl = `${Configuration.EmailRenderApi.baseUrl}` + `${Configuration.EmailRenderApi.templatecontroller}`
+            + addQueryParametersToContentStackUrl(queryParameter);
+    }
     var headers = EMAILUtility.getContentStackRequestHeader();
 
-    var successCode = await EMAILUtility.createFetchRequest(url, headers, "PUT", data);
+    var successCode = await EMAILUtility.createFetchRequest(saveurl, headers, "PUT", data);
 
     if (successCode !== HTTP_SUCCESS_CODE) {
+        renderAlertHtml(true, 'danger', 'Not Saved', [{ 'label': 'ok', 'value': false, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
         throw new Error("Some exception occured");
     }
-
-    alert("Template has been saved successfully");
+    renderAlertHtml(true, 'success', 'Saved', [{ 'label': 'ok', 'value': true, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
+    //  alert("Template has been saved successfully");
 }
 
 var retrieveContentBlockContentFromHTML = function (html) {
@@ -374,12 +399,12 @@ async function previewTemplate(html) {
     ExternalPreviewPopup.openPreviewPopup(html);
 }
 
-document.querySelector("#saveButton").addEventListener('click', function (data) {
-    window.StripoApi.getTemplate(function (html, css) {
-        saveTemplateToContentStack(html)
-        isSaved = true;
-    })
-});
+// document.querySelector("#saveButton").addEventListener('click', function (data) {
+//     window.StripoApi.getTemplate(function (html, css) {
+//         saveTemplateToContentStack(html)
+//         isSaved = true;
+//     })
+// });
 
 document.querySelector('#previewButton').addEventListener('click', function () {
     previewBtnTriggered();
@@ -395,9 +420,11 @@ window.addEventListener("beforeunload", function (e) {
         return dialogText;
     }
 });
-window.addEventListener("keydown", event => {
+window.addEventListener("keydown", (event) => {
     if (event.isComposing || event.keyCode === 27) {
-        externalPreviewPopup.style.visibility = 'hidden';
+        backtoParentPage();
+        // externalPreviewPopup.style.visibility = 'hidden';
+
     }
     // do something
 });
@@ -406,55 +433,18 @@ window.addEventListener("keydown", event => {
  * Desc : Create Custom tiles
  */
 function createCustomTiles() {
-    let customTiles = `
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
+    let customTileValues = ["Header & Footer", "Email Body", "Orders", "Payment Summary", "Cross-Sell", "Marketing Blocks"];
+    let customTiles = "";
+    for (let tileValue of customTileValues) {
+        customTiles += `<div class="col-xs-6 col-sm-4 esdev-no-padding"> 
         <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
             <p>
                 <span class="es-icon-product cls-custom-title-block-icon"></span>
             </p>
-            Header & Footer
+            <span class="cls-custom-font-size-blocks">${tileValue}</span>
         </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Email Body
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Orders
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            <span class="cls-custom-font-size-blocks">Payment Summary</span>
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Cross-Sell
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Marketing Blocks
-        </div>
-    </div>`;
+    </div>`
+    }
     let checkBlockTiles = setInterval(() => {
         if (document.querySelector(".esdev-blocks") != null && document.querySelector(".cls-custom-tile-block") == null) {
             document.querySelector(".esdev-blocks").insertAdjacentHTML('beforeend', customTiles);
