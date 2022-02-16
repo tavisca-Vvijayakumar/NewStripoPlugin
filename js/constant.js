@@ -12,3 +12,4 @@ export const EMAILRENDER_APIPATH = 'api/v1.0/contentblocks';
 export const EMAILRENDER_TEMPLATE_APIPATH = 'api/v1.0/templates';
 export const EMAILRENDER_API_GETENTRIESOFCONTENTTYPEASYNCPATH = 'contenttypeentries';
 export const EMAILRENDER_API_TEMPLATEBLOCKBYENTRYIDASYNC = 'entrybyuuid';
+export const DECRYPTING_KEY = 'secret key 123';

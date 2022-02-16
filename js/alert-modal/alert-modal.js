@@ -1,10 +1,10 @@
 
-function renderAlertHtml(condition, type, message, actionButtons) {
+function renderAlertHtml(condition,type,message,actionButtons){
     closeAlertModal();
     let div = document.createElement('div');
     div.className = "cls-alert-container";
-    if (condition) {
-        switch (type) {
+    if(condition){
+        switch(type){
             case 'success':
                 div.innerHTML = `
                     <div class="cls-alert-box">
@@ -54,32 +54,32 @@ function renderAlertHtml(condition, type, message, actionButtons) {
                 break;
             default:
                 break;
-        }
-        if (actionButtons.length > 0) {
+        }  
+        if(actionButtons.length > 0){
             let innerDiv = document.createElement('div');
-            for (let elements of actionButtons) {
-                if (elements.value) {
-                    innerDiv.innerHTML += `<button class="cls-yes-btn ${elements.class}" id="${elements.id}" onclick="${elements.functionName}">${elements.label}</button>`;
-                } else {
-                    innerDiv.innerHTML += `<button class="cls-no-btn ${elements.class}" id="${elements.id}"  onclick="${elements.functionName}">${elements.label}</button>`;
-                }
+            for(let elements of actionButtons){
+                if(elements.value){
+                    innerDiv.innerHTML += `<button class="cls-yes-btn" id="${elements.functionName}" onclick="${elements.functionName}()">${elements.label}</button>`;
+                }else{
+                    innerDiv.innerHTML += `<button class="cls-no-btn" id="${elements.functionName}"  onclick="${elements.functionName}()">${elements.label}</button>`;
+                }                
             }
-            div.firstElementChild.appendChild(innerDiv);
-        }
-        document.getElementById('alert-modal').appendChild(div);
-        document.getElementById('alert-modal').style.display = 'block';
-    } else {
+            div.firstElementChild.appendChild(innerDiv);                   
+        }        
+        document.getElementById('alert-modal').appendChild(div); 
+        document.getElementById('alert-modal').style.display = 'block';  
+    }else{
         document.getElementById('alert-modal').style.display = 'none';
-    }
+    }  
 }
 
-function closewindow() {
+function closewindow(){
     window.close();
 }
 
-function closeAlertModal() {
+function closeAlertModal(){
     document.getElementById('alert-modal').style.display = 'none';
-    while (document.getElementById('alert-modal').firstChild) {
+    while(document.getElementById('alert-modal').firstChild){
         document.getElementById('alert-modal').removeChild(document.getElementById('alert-modal').firstChild);
     }
 }

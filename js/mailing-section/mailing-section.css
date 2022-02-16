@@ -1,48 +1,53 @@
-.cls-mailing-section {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1050;
-    width: 100%;
+.cls-mailing-section{
+    position: absolute;
+    z-index: 2;
+    width: 45%;
+    right: 10%;
     background-color: #f6f5f7;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     box-shadow: 3px 0px 5px #ccc;
-    transition: transform .3s ease-out,-webkit-transform .3s ease-out;
-    height: 100%;
     transform: translate(0%,-100%);
-    overflow: scroll !important;
+    max-height: 260px;
+    overflow-y: auto;   
 }
-
-.cls-mail-section-section-show {
-    transform: translate(0%,0%);
+.cls-mail-section-section-show{
+    animation: openMail .69s linear;
+    transform:translate(0%,0%);
 }
-
-.cls-mail-section-section-hide {
-    transform: translate(0%,-100%);
+@keyframes openMail {
+    from{ transform: translate(0%,-100%)}
+    to{  transform:translate(0%,0%)}
 }
-
-.cls-mailing-form {
-    height: 100%;
+.cls-mail-section-section-hide{
+    animation: hideMail .69s linear;
+    transform:translate(0%,-100%);
 }
-
-.cls-form-parent-label {
+@keyframes hideMail {
+    from{ transform: translate(0%,0%)}
+    to{  transform:translate(0%,-100%)}
+}
+.cls-mailing-form{
+    padding: 10px 20px 1px 20px;
+    box-shadow: 0px 0px 6px #ccc inset;
+}
+.cls-form-parent-label{
     display: block;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
 }
-
-.cls-form-label {
+.cls-form-label{
     display: block;
-    font-size: 15px;
+    font-size: 14px;
+    margin: 2% 0%;
     font-weight: 500;
-    margin: 0px 0px 5px 0px;
 }
-/* .cls-form-sub-label{
+.cls-form-sub-label{
     display: block;
-    font-size: 10px;
-    font-weight: normal;
-} */
-.cls-form-input-text {
+    font-size: 8px;
+    margin: 0% 0% 2% 0%;
+}
+.cls-form-input-text{
     width: 100%;
     display: block;
     width: 100%;
@@ -59,675 +64,16 @@
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     margin: 0px 0px 0px -1px;
 }
-
-    .cls-form-input-text:focus-visible {
-        outline: none;
-    }
-
-.cls-form-input-checkbox {
+.cls-form-input-text:focus-visible{
+    outline: none;
+}
+.cls-form-input-checkbox{
     vertical-align: revert;
 }
-
-.cls-form-checkbox-label {
-    font-size: 15px;
-}
-
-.cls-display-details {
-    display: block;
+.cls-form-checkbox-label{
     font-size: 12px;
 }
-
-    .cls-display-details > * {
-        width: 120px;
-        display: inline-block;
-        margin: 5px 0px;
-    }
-
-.cls-form-element-section {
-    margin: 10px 0px;
-}
-
-.cls-send-mail-btn {
-    border-radius: 17px;
-    color: #fff;
-    background-color: #32cb4b;
-    border: #32cb4b;
-    padding: 9px 35px;
-    cursor: pointer;
-    margin: 1% 0%;
-    font-size: 14px;
-}
-
-.cls-arrow-icon-mail-form {
-    width: 10px;
-    height: 10px;
-}
-
-.cls-mail-predefined-btn {
-    cursor: pointer;
-}
-
-.cls-mail-prefined-valus {
-    padding: 0px 0px 5px 10px;
-}
-
-.cls-mail-form-section {
-    height: 100%;
-    padding: 10px 75px;
-}
-
-.cls-d-flex-and-center {
-    display: flex;
-    align-items: center;
-}
-
-.cls-icon-info-tooltip {
-    width: 13px;
-    height: 13px;
-    border: 1.4px solid #000;
-    border-radius: 10px;
-    padding: 0px 3px;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0px 5px;
-    filter: opacity(0.5);
-}
-
-.cls-unset-deafult-btn-style {
-    border: none;
-    background: unset;
-    padding: unset;
-}
-
-.cls-tool-tip-left-mail-form::after {
-    bottom: 32% !important;
-    left: -2% !important;
-    margin-left: -5px !important;
-    border-width: 5px !important;
-    transform: rotate(-88deg) !important;
-}
-
-.cls-custom-tooltip-mail-form {
-    width: 200px !important;
-    top: -12% !important;
-    left: 333% !important;
-}
-
-.cls-box-selection-grid-separation {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2%;
-}
-
-.cls-tile {
-    grid-column: span 1;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    cursor: pointer;
-    border-radius: 8px;
-    position: relative;
-}
-
-.cls-tile-value {
-    display: block;
-    font-size: 13px;
-    padding: 5px 20px;
-    display: flex;
-    align-items: baseline;
-    gap: 5%;
-}
-
-.cls-tick-section {
-    position: absolute;
-    top: -9%;
-    right: -5%;
-    display: inline-block;
-    border: 1px solid black;
-    padding: 1px 5px;
-    border-radius: 20px;
-    background-color: #fff;
-    display: none;
-}
-
-.cls-tick-icon {
-    width: 15px;
-    height: 15px;
-}
-
-.cls-tile-content {
-    height: 150px;
-    overflow-y: auto;
-}
-
-.cls-d-inline-block {
-    display: inline-block;
-}
-
-.cls-cursor-pointer {
-    cursor: pointer;
-}
-
-.cls-v-align-middle {
-    vertical-align: middle;
-}
-
-.cls-tile-content .cls-tile-value:last-child {
-    border-bottom: unset;
-}
-
-.cls-tile-header {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    background-color: rgb(204, 204, 204);
-    text-align: center;
-    padding: 7px 20px;
-    font-size: 14px;
-}
-
-.cls-customize-margin-top_20 {
-    margin-top: 20px;
-}
-
-.cls-tile-option-tick {
-    width: 10px;
-    height: 10px;
-}
-/**
- * Desc : Media query included for responsive screen
- **/
-@media only screen and (min-width: 1920px) and (max-width: 2560px) {
-    .cls-form-parent-label {
-        font-size: 18px;
-    }
-    /* .cls-form-sub-label{
-        font-size: 14px;
-    } */
-    .cls-form-input-text {
-        height: 45px;
-        font-size: 14px;
-    }
-
-    .cls-form-label {
-        font-size: 18px;
-    }
-
-    .cls-tile-value {
-        font-size: 18px;
-    }
-
-    .cls-display-details {
-        font-size: 15px;
-    }
-
-        .cls-display-details > * {
-            width: 200px;
-        }
-
-    .cls-custom-tooltip-mail-form {
-        width: 250px !important;
-        top: -12% !important;
-        left: 333% !important;
-        font-size: 14px !important;
-    }
-
-    .cls-send-mail-btn {
-        padding: 8px 40px;
-        font-size: 18px;
-    }
-
-    .modal-title {
-        font-size: 24px;
-        margin: 0% 0%;
-        width: 71%
-    }
-
-    .cls-icon-info-tooltip {
-        width: 16px;
-        height: 16px;
-    }
-
-    .cls-form-checkbox-label {
-        font-size: 18px;
-    }
-
-    .cls-back-icon-to-editor {
-        width: 30px;
-        height: 25px;
-    }
-
-    .modal-close-button {
-        font-size: 24px;
-    }
-
-    .cls-tool-tip-left {
-        top: 20% !important;
-        left: 243% !important;
-        font-size: 12px !important;
-        width: 100px !important;
-    }
-
-    .cls-arrow-icon-mail-form {
-        width: 14px;
-        height: 14px;
-    }
-
-    .cls-tile-content {
-        height: 180px;
-    }
-
-    .cls-tile-header {
-        padding: 8px 20px;
-        font-size: 18px;
-    }
-
-    .cls-tick-icon {
-        width: 20px;
-        height: 25px;
-    }
-
-    .cls-tick-section {
-        right: -4%;
-    }
-
-    .cls-tile-option-tick {
-        width: 15px;
-        height: 12px;
-    }
-}
-
-@media only screen and (min-width: 1750px) and (max-width: 1920px) {
-    .cls-form-parent-label {
-        font-size: 18px;
-    }
-    /* .cls-form-sub-label{
-        font-size: 14px;
-    } */
-    .cls-form-input-text {
-        height: 45px;
-        font-size: 14px;
-    }
-
-    .cls-form-label {
-        font-size: 18px;
-    }
-
-    .cls-tile-value {
-        font-size: 18px;
-    }
-
-    .cls-display-details {
-        font-size: 15px;
-    }
-
-        .cls-display-details > * {
-            width: 200px;
-        }
-
-    .cls-custom-tooltip-mail-form {
-        width: 250px !important;
-        top: -12% !important;
-        left: 333% !important;
-        font-size: 14px !important;
-    }
-
-    .cls-send-mail-btn {
-        padding: 8px 40px;
-        font-size: 18px;
-    }
-
-    .modal-title {
-        font-size: 24px;
-        margin: 0% 0%;
-        width: 71%
-    }
-
-    .cls-icon-info-tooltip {
-        width: 16px;
-        height: 16px;
-    }
-
-    .cls-form-checkbox-label {
-        font-size: 18px;
-    }
-
-    .cls-back-icon-to-editor {
-        width: 30px;
-        height: 25px;
-    }
-
-    .modal-close-button {
-        font-size: 24px;
-    }
-
-    .cls-tool-tip-left {
-        top: 20% !important;
-        left: 243% !important;
-        font-size: 12px !important;
-        width: 100px !important;
-    }
-
-    .cls-arrow-icon-mail-form {
-        width: 14px;
-        height: 14px;
-    }
-
-    .cls-tile-content {
-        height: 180px;
-    }
-
-    .cls-tile-header {
-        padding: 8px 20px;
-        font-size: 18px;
-    }
-
-    .cls-tick-icon {
-        width: 20px;
-        height: 25px;
-    }
-
-    .cls-tick-section {
-        right: -4%;
-    }
-
-    .cls-tile-option-tick {
-        width: 15px;
-        height: 12px;
-    }
-}
-
-@media only screen and (min-width: 1500px) and (max-width: 1750px) {
-    .cls-form-parent-label {
-        font-size: 18px;
-    }
-    /* .cls-form-sub-label{
-        font-size: 14px;
-    } */
-    .cls-form-input-text {
-        height: 45px;
-        font-size: 14px;
-    }
-
-    .cls-form-label {
-        font-size: 18px;
-    }
-
-    .cls-tile-value {
-        font-size: 18px;
-    }
-
-    .cls-display-details {
-        font-size: 15px;
-    }
-
-        .cls-display-details > * {
-            width: 200px;
-        }
-
-    .cls-custom-tooltip-mail-form {
-        width: 250px !important;
-        top: -12% !important;
-        left: 333% !important;
-        font-size: 14px !important;
-    }
-
-    .cls-send-mail-btn {
-        padding: 8px 40px;
-        font-size: 18px;
-    }
-
-    .modal-title {
-        font-size: 24px;
-        ;
-        margin: 0% 0%;
-        width: 71%;
-    }
-
-    .cls-icon-info-tooltip {
-        width: 16px;
-        height: 16px;
-    }
-
-    .cls-form-checkbox-label {
-        font-size: 18px;
-    }
-
-    .cls-back-icon-to-editor {
-        width: 30px;
-        height: 25px;
-    }
-
-    .modal-close-button {
-        font-size: 24px;
-    }
-
-    .cls-tool-tip-left {
-        top: 20% !important;
-        left: 243% !important;
-        font-size: 12px !important;
-        width: 100px !important;
-    }
-
-    .cls-arrow-icon-mail-form {
-        width: 14px;
-        height: 14px;
-    }
-
-    .cls-tile-content {
-        height: 180px;
-    }
-
-    .cls-tile-header {
-        padding: 8px 20px;
-        font-size: 18px;
-    }
-
-    .cls-tick-icon {
-        width: 20px;
-        height: 25px;
-    }
-
-    .cls-tick-section {
-        right: -4%;
-    }
-
-    .cls-tile-option-tick {
-        width: 15px;
-        height: 12px;
-    }
-}
-
-@media only screen and (min-width: 1367px) and (max-width: 1500px) {
-    .cls-form-parent-label {
-        font-size: 18px;
-    }
-    /* .cls-form-sub-label{
-        font-size: 14px;
-    } */
-    .cls-form-input-text {
-        height: 45px;
-        font-size: 14px;
-    }
-
-    .cls-form-label {
-        font-size: 18px;
-    }
-
-    .cls-tile-value {
-        font-size: 18px;
-    }
-
-    .cls-display-details {
-        font-size: 15px;
-    }
-
-        .cls-display-details > * {
-            width: 200px;
-        }
-
-    .cls-custom-tooltip-mail-form {
-        width: 250px !important;
-        top: -12% !important;
-        left: 333% !important;
-        font-size: 14px !important;
-    }
-
-    .cls-send-mail-btn {
-        padding: 8px 40px;
-        font-size: 18px;
-    }
-
-    .modal-title {
-        font-size: 24px;
-        margin: 0% 0%;
-        width: 71%;
-    }
-
-    .cls-icon-info-tooltip {
-        width: 16px;
-        height: 16px;
-    }
-
-    .cls-form-checkbox-label {
-        font-size: 18px;
-    }
-
-    .cls-back-icon-to-editor {
-        width: 30px;
-        height: 25px;
-    }
-
-    .modal-close-button {
-        font-size: 24px;
-    }
-
-    .cls-tool-tip-left {
-        top: 20% !important;
-        left: 243% !important;
-        font-size: 12px !important;
-        width: 100px !important;
-    }
-
-    .cls-arrow-icon-mail-form {
-        width: 14px;
-        height: 14px;
-    }
-
-    .cls-tile-header {
-        padding: 8px 20px;
-        font-size: 18px;
-    }
-
-    .cls-tick-icon {
-        width: 20px;
-        height: 25px;
-    }
-
-    .cls-tick-section {
-        right: -4%;
-    }
-
-    .cls-tile-option-tick {
-        width: 15px;
-        height: 12px;
-    }
-}
-
-@media only screen and (min-width: 650px) and (max-width: 1024px) {
-    .cls-box-selection-grid-separation {
-        grid-template-columns: repeat(12, 1fr);
-    }
-
-    .cls-tile {
-        grid-column: span 4;
-    }
-
-    .cls-mail-form-section {
-        height: 100%;
-        padding: 10px 60px;
-    }
-}
-
-@media only screen and (min-width: 380px) and (max-width: 650px) {
-    .cls-box-selection-grid-separation {
-        grid-template-columns: repeat(12, 1fr);
-    }
-
-    .cls-tile {
-        grid-column: span 6;
-    }
-
-    .cls-mail-form-section {
-        padding: 10px 55px;
-    }
-}
-/* @media only screen 
-and (min-width: 1200px) 
-and (max-width: 1366px)  {
-    .cls-form-parent-label{
-        font-size: 18px;
-    }
-    .cls-form-sub-label{
-        font-size: 14px;
-    }
-    .cls-form-input-text{
-        height: 45px;
-        font-size: 14px;
-    }
-    .cls-form-label{
-        font-size: 18px;
-    }
-    .cls-tile-value{
-        font-size: 18px;
-    }
-    .cls-display-details{
-        font-size: 15px;
-    }
-    .cls-display-details > *{
-        width: 200px;
-    }
-    .cls-custom-tooltip-mail-form{
-        width: 250px!important;
-        top: -12%!important;
-        left: 333%!important;
-        font-size: 14px!important;
-    }
-    .cls-send-mail-btn{
-        padding: 10px 45px;
-        font-size: 18px;
-    }
-    .modal-title{
-        font-size: 25px;
-        margin:0% 0%;
-        width:71%;
-    }
-    .cls-icon-info-tooltip{
-        width: 16px;
-        height: 16px;
-    }
-    .cls-form-checkbox-label{
-        font-size: 18px;
-    }
-    .cls-back-icon-to-editor{
-        width: 30px;
-        height: 25px;
-    }
-    .modal-close-button{
-        font-size: 25px;
-    }
-    .cls-tool-tip-left {
-        top: 20%!important;
-        left: 243%!important;
-        font-size: 12px!important;
-        width: 100px!important;
-    }
-} */
-
-@media only screen and (min-width: 1024px) and (max-width: 1200px) {
-}
-
-@media only screen and (min-width: 280px) and (max-width: 1024px) {
-}
-/* .cls-dropdown-grid-separation{
+.cls-dropdown-grid-separation{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 5%;
@@ -749,8 +95,315 @@ and (max-width: 1366px)  {
     box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15;
     margin: 0px 0px 0px -1px;
-    padding: 6px 12px;
+    padding: 0px 8px;
 }
 .cls-form-input-dropdown:focus-visible{
     outline: none;
-} */
+}
+.cls-display-details{
+    display: block;
+    font-size: 12px;
+}
+
+.cls-display-details > *{
+    width: 120px;
+    display: inline-block;
+    margin: 1% 0%;
+}
+.cls-form-element-section{
+    margin: 2% 0%;
+}
+.cls-send-mail-btn{
+    border-radius: 17px;
+    color: #fff;
+    background-color: #32cb4b;
+    border: #32cb4b;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin: 2%;
+    font-size: 12px;
+   
+}
+.cls-send-mail-btn-section{
+    position: sticky;
+    bottom: 0px;
+    width: 100%;
+    background-color: #f6f5f7;
+    text-align: right;
+    border: 1px solid #d1d1d1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.cls-arrow-icon-mail-form{
+    width: 10px;
+    height: 10px;
+}
+.cls-mail-predefined-btn{
+    cursor: pointer;
+}
+.cls-mail-prefined-valus{
+    padding: 0px 0px 5px 10px;
+}
+/**
+ * Desc : Media query included for responsive screen
+ **/
+ @media only screen 
+ and (min-width: 1920px) 
+ and (max-width: 2560px)  {
+    .cls-mailing-section {
+        width: 50%;
+    }
+    .cls-mailing-section{
+        max-height: 800px;
+    }
+    .cls-form-parent-label{
+        font-size: 18px;
+    }
+    .cls-form-label{
+        font-size: 18px;
+        margin: 1% 0%;
+    }
+    .cls-form-input-text{
+        height: 40px;
+        font-size: 15px;
+    }
+    .cls-form-sub-label{
+        font-size: 12px;
+        margin: 0% 0% 1% 0%;
+    }
+    .cls-form-input-dropdown{
+        height: 40px;
+        font-size: 15px;
+    }
+    .cls-form-checkbox-label{
+        font-size: 18px;
+    }
+    .cls-send-mail-btn{
+        font-size: 15px;
+        padding: 10px 35px;
+    }
+    .cls-display-details{
+        font-size: 15px;
+    }
+    .cls-display-details > *{
+        width: 200px;
+    }
+}
+ @media only screen 
+ and (min-width: 1750px) 
+ and (max-width: 1920px)  {
+    .cls-mailing-section {
+        width: 50%;
+    }
+    .cls-mailing-section{
+        max-height: 800px;
+    }
+    .cls-form-parent-label{
+        font-size: 18px;
+    }
+    .cls-form-label{
+        font-size: 18px;
+        margin: 1% 0%;
+    }
+    .cls-form-input-text{
+        height: 40px;
+        font-size: 15px;
+    }
+    .cls-form-sub-label{
+        font-size: 12px;
+        margin: 0% 0% 1% 0%;
+    }
+    .cls-form-input-dropdown{
+        height: 40px;
+        font-size: 15px;
+    }
+    .cls-form-checkbox-label{
+        font-size: 18px;
+    }
+    .cls-send-mail-btn{
+        font-size: 15px;
+        padding: 10px 35px;
+    }
+    .cls-display-details{
+        font-size: 15px;
+    }
+    .cls-display-details > *{
+        width: 200px;
+    }
+}
+@media only screen 
+and (min-width: 1500px) 
+and (max-width: 1750px)  {
+    .cls-mailing-section {
+        width: 50%;
+    }
+    .cls-mailing-section{
+        max-height: 750px;
+    }
+    .cls-form-parent-label{
+        font-size: 18px;
+    }
+    .cls-form-label{
+        font-size: 18px;
+        margin: 1% 0%;
+    }
+    .cls-form-input-text{
+        height: 40px;
+        font-size: 15px;
+    }
+    .cls-form-sub-label{
+        font-size: 12px;
+        margin: 0% 0% 1% 0%;
+    }
+    .cls-form-input-dropdown{
+        height: 40px;
+        font-size: 15px;
+    }
+    .cls-form-checkbox-label{
+        font-size: 18px;
+    }
+    .cls-send-mail-btn{
+        font-size: 15px;
+        padding: 10px 35px;
+    }
+    .cls-display-details{
+        font-size: 15px;
+    }
+    .cls-display-details > *{
+        width: 200px;
+    }
+}
+ @media only screen 
+ and (min-width: 1366px) 
+ and (max-width: 1500px)  {
+    .cls-mailing-section {
+        width: 55%;
+    }
+    .cls-mailing-section{
+        max-height: 700px;
+    }
+    .cls-form-parent-label{
+        font-size: 18px;
+    }
+    .cls-form-label{
+        font-size: 18px;
+        margin: 1% 0%;
+    }
+    .cls-form-input-text{
+        height: 40px;
+        font-size: 15px;
+    }
+    .cls-form-sub-label{
+        font-size: 12px;
+        margin: 0% 0% 1% 0%;
+    }
+    .cls-form-input-dropdown{
+        height: 40px;
+        font-size: 15px;
+    }
+    .cls-form-checkbox-label{
+        font-size: 18px;
+    }
+    .cls-send-mail-btn{
+        font-size: 15px;
+        padding: 10px 35px;
+    }
+    .cls-display-details{
+        font-size: 15px;
+    }
+    .cls-display-details > *{
+        width: 200px;
+    }
+}
+@media only screen 
+and (min-width: 1200px) 
+and (max-width: 1366px)  {
+    .cls-mailing-section {
+        width: 55%;
+    }
+    .cls-mailing-section{
+        max-height: 500px;
+    }
+    .cls-form-parent-label{
+        font-size: 14px;
+    }
+    .cls-form-label{
+        font-size: 14px;
+        margin: 1% 0%;
+    }
+    .cls-form-input-text{
+        height: 35px;
+        font-size: 13px;
+    }
+    .cls-form-sub-label{
+        font-size: 10px;
+        margin: 0% 0% 1% 0%;
+    }
+    .cls-form-input-dropdown{
+        height: 35px;
+        font-size: 13px;
+    }
+    .cls-form-checkbox-label{
+        font-size: 14px;
+    }
+    .cls-send-mail-btn{
+        font-size: 12px;
+        padding: 10px 20px;
+    }
+    .cls-display-details{
+        font-size: 13px;
+    }
+    .cls-display-details > *{
+        width: 200px;
+    }
+}
+
+@media only screen 
+and (min-width: 1024px) 
+and (max-width: 1200px)  {
+    .cls-mailing-section {
+        width: 55%;
+    }
+    .cls-mailing-section{
+        max-height: 450px;
+    }
+    .cls-form-parent-label{
+        font-size: 12px;
+    }
+    .cls-form-label{
+        font-size: 12px;
+        margin: 1% 0%;
+    }
+    .cls-form-input-text{
+        height: 25px;
+        font-size: 12px;
+    }
+    .cls-form-sub-label{
+        font-size: 10px;
+        margin: 0% 0% 1% 0%;
+    }
+    .cls-form-input-dropdown{
+        height: 25px;
+        font-size: 12px;
+    }
+    .cls-form-checkbox-label{
+        font-size: 12px;
+    }
+    .cls-send-mail-btn{
+        font-size: 12px;
+        padding: 10px 20px;
+    }
+    .cls-display-details{
+        font-size: 12px;
+    }
+    .cls-display-details > *{
+        width: 200px;
+    }
+}
+ @media only screen 
+ and (min-width: 280px) 
+ and (max-width: 1024px)  {
+    .cls-mailing-section {
+        width: 45%;
+    }
+} 
