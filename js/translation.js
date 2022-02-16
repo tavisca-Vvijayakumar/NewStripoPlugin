@@ -2,7 +2,7 @@ export default {
     "en": {
         "codeeditor": "Code Editor",
         "preview": "Preview",
-        "save": "Save",
+        "save": "Save Template",
     },
     "es": {
         "codeeditor": "Editora de código",

@@ -246,8 +246,8 @@ async function getTemplateFromEntry() {
 async function getTemplateFromContentStack() {
     var queryParameter = {
         locale: usercontext.locale,
-        version: usercontext.version
-
+        version:usercontext.version
+        
     }
     //  var url = `${Configuration.ContentStack.baseUrl}` + 'content_types/' + `${usercontext.contentTypeId}`
     //    + '/entries/' + `${usercontext.entryId}?` + addQueryParametersToContentStackUrl(queryParameter);
@@ -321,7 +321,7 @@ async function saveTemplateToContentStack(htmltext) {
         }
     };
 
-    var url = `${Configuration.ContentStack.baseUrl}` + 'content_types/' + `${usercontext.contentTypeId}` + '/entries/' + `${usercontext.entryId}` + '?version=' + `${usercontext.version}`;
+    var url = `${Configuration.ContentStack.baseUrl}` + 'content_types/' + `${usercontext.contentTypeId}` + '/entries/' + `${usercontext.entryId}`+'?version='+`${usercontext.version}`;
 
     //Save through tavisca API
     // var queryParameter = {

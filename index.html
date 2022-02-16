@@ -6,14 +6,13 @@
     <title>Email Stripo Plugin App</title>
     <link href="./css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="external_preview_popup.css">
-    <link rel="stylesheet" href="./js/alert-modal/alert-modal.css"/>
-    <link rel="stylesheet" href="./js/mailing-section/mailing-section.css"/>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 </head>
+
     <body>
         <!-- loader section begins -->
         <div id="overlay">
@@ -135,8 +134,7 @@
                     </a>
                 </div> -->
                 <div class="cls-header-left-side-controls">
-                    <button id="back" class="cls-left-icon cls-icon-customize-btn cls-custom-padding-back-icon btn tooltip" 
-                    onclick="window.close();">
+                    <button id="back" class="cls-left-icon cls-icon-customize-btn cls-custom-padding-back-icon btn tooltip" onclick="window.close();">
                         <span class="tooltiptext cls-tool-tip-left">Leave</span>
                         <img class="cls-icon-size-customization" src="./img/svg-icons/back-svg.svg" alt="back">
                     </button>
@@ -163,131 +161,26 @@
                         <div id="btn-loader" class="cls-stripo-loader"></div>
                         <img class="cls-icon-size-customization" id="preview-icon" src="./img/svg-icons/phone-svg.svg" alt="preview">
                     </button>             
-                    <button id="btnemailsend" class="cls-icon-customize-btn btn tooltip cls-icon-margin-padding-customize" onclick="actionToSendMail()">
+                    <button id="btnemailsend" class="cls-icon-customize-btn btn tooltip cls-icon-margin-padding-customize">
                         <span class="tooltiptext">Send Email</span>
                         <img class="cls-icon-size-customization"  src="./img/svg-icons/mail-svg.svg" alt="send email">
                     </button>
                 </div> 
                 <div>
-                    <button class="cls-save-btn btn tooltip" id="saveButton" onclick="renderAlertHtml(true,'warning','Do you want to Save',[{'label':'No','value':false,'functionName':'closeAlertModal'},{'label':'Yes','value':true,'functionName':'saveBtn'}])">
-                        <span class="tooltiptext">Save</span>
-                        Save
+                    <button class="cls-save-btn btn tooltip" id="saveButton">
+                        <span class="tooltiptext">Save</span>Save
                     </button>
                 </div>                  
             </div>
-            <!-- mailing section begins-->
-            <div class="cls-mailing-section">
-                <form class="cls-mailing-form" name="mailing-form">
-                    <div class="cls-form-element-section">
-                        <label class="cls-form-parent-label" for="mail-input">Send test to</label>
-                        <span class="cls-form-sub-label">This simulates actual mails being sent</span>
-                        <input class="cls-form-input-text" type="text" name="mail-input" id="mail-input" placeholder="contact@tavisca.com"/>
-                    </div>
-                   <div class="cls-form-element-section">
-                        <label class="cls-form-label" for="mail-subject-input">Subject</label>
-                        <input class="cls-form-input-text" type="text" name="mail-subject-input" id="mail-subject-input" placeholder="subject"/>
-                   </div>
-                    <div class="cls-form-element-section">
-                        <input class="cls-form-input-checkbox"  type="checkbox" id="mail-checkbox-default" name="mail-checkbox-default"/>
-                        <label class="cls-form-checkbox-label" for="mail-checkbox-default">Default</label>
-                    </div>
-                    <div class="cls-dropdown-grid-separation">
-                        <div class="cls-form-element-section cls-dropdown-grid">
-                            <label class="cls-form-label" for="mail-dropdown-booked-products">Booked Products</label>
-                            <select class="cls-form-input-dropdown" id="mail-dropdown-booked-products" name="mail-dropdown-booked-products">
-                                <option>Flight Only</option>
-                                <option>Hotels Only</option>
-                                <option>Cars Only</option>
-                                <option>All Products</option>
-                            </select>
-                        </div>
-                        <div class="cls-form-element-section cls-dropdown-grid">
-                            <label class="cls-form-label" for="mail-dropdown-passengers">Passengers</label>
-                            <select class="cls-form-input-dropdown" id="mail-dropdown-passengers" name="mail-dropdown-passengers">
-                                <option>Single</option>
-                                <option>Multiple</option>
-                                <option>Multiple + infant</option>
-                                <option>All Products</option>
-                            </select>
-                        </div>
-                        <div class="cls-form-element-section cls-dropdown-grid">
-                            <label class="cls-form-label" for="mail-dropdown-hotel-type">Hotel type</label>
-                            <select class="cls-form-input-dropdown" id="mail-dropdown-hotel-type" name="mail-dropdown-hotel-type">
-                                <option>Single</option>
-                                <option>Multiple</option>
-                            </select>
-                        </div>
-                        <div class="cls-form-element-section cls-dropdown-grid">
-                            <label class="cls-form-label" for="mail-dropdown-resort-fee">Resort Fee</label>
-                            <select class="cls-form-input-dropdown" id="mail-dropdown-resort-fee" name="mail-dropdown-resort-fee">
-                                <option>Yes</option>
-                                <option>No</option>
-                            </select>
-                        </div>
-                        <div class="cls-form-element-section cls-dropdown-grid">
-                            <label class="cls-form-label" for="mail-dropdown-payment-options">Payment options</label>
-                            <select class="cls-form-input-dropdown" id="mail-dropdown-payment-options" name="mail-dropdown-payment-options">
-                                <option>Points</option>
-                                <option>Cash</option>
-                                <option>Points + Cash</option>
-                            </select>
-                        </div>
-                    </div>                
-                    <div class="cls-form-element-section">
-                        <label class="cls-form-label">
-                            <span id="prefined-value-show-btn" class="cls-mail-predefined-btn" onclick="clickPredefined();">
-                                <img class="cls-arrow-icon-mail-form" src="./img/svg-icons/angle-right.svg"/>
-                            </span>
-                            <span>
-                                Predefined
-                            </span>
-                        </label>                        
-                    </div>
-                    <div class="cls-mail-prefined-valus" style="display:none;">
-                        <span class="cls-display-details">
-                            <span>Client ID</span>
-                            <span>52</span>
-                        </span>
-                        <span class="cls-display-details">
-                            <span>Client Name</span>
-                            <span>Default</span>
-                        </span>
-                        <span class="cls-display-details">
-                            <span>Program ID</span>
-                            <span>723</span>
-                        </span>
-                        <span class="cls-display-details">
-                            <span>Currency</span>
-                            <span>USD</span>
-                        </span>
-                        <span class="cls-display-details">
-                            <span>Language</span>
-                            <span>en-US</span>
-                        </span>
-                        <span class="cls-display-details">
-                            <span>Template type</span>
-                            <span>Order Confirmation</span>
-                        </span>
-                    </div>                                   
-                </form>
-                <div class="cls-send-mail-btn-section">
-                    <button type="button" class="cls-send-mail-btn">Send mail</button>
-                </div>
-            </div>
-            <!-- mailing section ends-->
             <!-- header section ends -->
             <div class="cls-stripo-plugin-render">
                 <div id="stripoSettingsContainer"></div>
                 <div id="stripoPreviewContainer"></div>
             </div>
-            <!-- alert section begins -->
-            <div id="alert-modal"></div>
-            <!-- alert section ends -->
         </div>
         <!-- page section ends -->
     </body>
-<script src="./js/alert-modal/alert-modal.js"></script>
-<script src="./js/mailing-section/mailing-section.js"></script>
+
 <script type="module">
     import { EMAILConfiguration } from './js/configuration.js';
         import { userContextConfiguration } from './js/usercontext.js';
@@ -295,36 +188,36 @@
         import { EMAILInitialization } from './index.js';
 
     //  Below commented code is for dev testing purpose
-     var message = {
-        "pluginId": "f7daf1549bed437488ed8c1fe92f3e20",
-        "secretKey": "6192a5b950614b5eb8ae05f20f395dec",
-        "contentTypeId": "email_templates_dev",
-        "entryId": "bltfd452f5faa455926",
-        "apiKey": "blt9c861b1a4b69e623",
-        "authToken": "csd90f9986822509791c593ee3",
-        "customblock": {
-            "contenttypeuuid": "custom_block_design"
-        },
-        "TemplateName": "Custom Block Design",
-        "locale": "en-us",
-        "environment": "dev_preview_environment",
-        "includefallback": "false",
-        "clientId": "default",
-        "version":"54"
-    }
+    // var message = {
+    //     "pluginId": "f7daf1549bed437488ed8c1fe92f3e20",
+    //     "secretKey": "6192a5b950614b5eb8ae05f20f395dec",
+    //     "contentTypeId": "email_templates_dev",
+    //     "entryId": "bltfd452f5faa455926",
+    //     "apiKey": "blt9c861b1a4b69e623",
+    //     "authToken": "csd90f9986822509791c593ee3",
+    //     "customblock": {
+    //         "contenttypeuuid": "custom_block_design"
+    //     },
+    //     "TemplateName": "Custom Block Design",
+    //     "locale": "en-us",
+    //     "environment": "dev_preview_environment",
+    //     "includefallback": "false",
+    //     "clientId": "default",
+    //     "version":"51"
+    // }
     /**
      * This method loads the stripo configuration first and then load the template.
      * @return stripo configuration from config.json.
     */
-  //  window.addEventListener("message", (event) => {
-        userContextConfiguration.loadUserContext(message).then(res => {
+   window.addEventListener("message", (event) => {
+        userContextConfiguration.loadUserContext(event.data).then(res => {
             EMAILConfiguration.loadStripoConfiguration().then(respose => {
                 EMAILInitialization.loadTemplate(EMAILInitialization.initPlugin);
             }).catch(err => {
                 console.log(err);
             })
         }).catch(err => { console.log(err) })
-    //}, false);
+    }, false);
 
 </script>
 
