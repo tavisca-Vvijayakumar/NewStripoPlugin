@@ -12,34 +12,10 @@ var isSaved = false; var mergeTags;
 
 $(document).ready(function () {
     modifyLoaderSection();
-    document.getElementById('alert-modal').style.display = 'none';
     window.addEventListener("resize", () => {
         document.body.querySelector(".cls-left-side-bottom-loader").style.height = "";
     }, true
     );
-    document.getElementById('codeEditor').addEventListener('click',()=>{
-        if(document.getElementById('codeEditor').classList.contains('cls-btn-pressed'))
-        {
-         document.getElementById('codeEditor').classList.remove('cls-btn-pressed');
-        }
-        else
-        {
-         document.getElementById('codeEditor').classList.add('cls-btn-pressed');
-        }
-    })
-    let setTimeInterval = setInterval(()=>{
-        if(document.querySelector("#saveBtn") != null){
-         console.log(document.querySelector("#saveBtn"));
-         //    clearInterval(setTimeInterval);
-             document.querySelector("#saveBtn").addEventListener('click', function (data) {
-                 document.querySelector('.cls-alert-container').firstElementChild.remove();
-                 window.StripoApi.getTemplate(function (html, css) {
-                     saveTemplateToContentStack(html)
-                     isSaved = true;
-                 })
-             });
-        }     
-    },1000);
     createCustomTiles();
 });
 var EMAILInitialization = {
@@ -190,6 +166,7 @@ var loadContentBlocksGroup = async function () {
                 "locale": element.locale,
                 "multilinecontent": element.multi_line
             }
+
             contentBlockGroupList.push(group);
         });
 
@@ -333,48 +310,44 @@ async function saveTemplateToContentStack(htmltext) {
         htmltext = doc.documentElement.outerHTML;
     }
     var response = retrieveContentBlockContentFromHTML(htmltext);
-    var saveurl = "";
-    if (Configuration.EmailRenderApi.setEmailRenderApiasDefaul == false) {
-        var data = {
-            "entry": {
-                "custom": "",
-                "multi_line": response,
-                "full_html_content": htmltext,
-                "tags": [],
-                //TODO Need to pass locale from stripo
-                "locale": "en-us"
-            }
-        };
-
-        saveurl = `${Configuration.ContentStack.baseUrl}` + 'content_types/' + `${usercontext.contentTypeId}` + '/entries/' + `${usercontext.entryId}` + '?version=' + `${usercontext.version}`;
-    }
-    else {
-        //Save through tavisca API
-        var queryParameter = {
-            contentType: usercontext.contentTypeId,
-            entryId: usercontext.entryId,
-            version: usercontext.version
+    var data = {
+        "entry": {
+            "custom": "",
+            "multi_line": response,
+            "full_html_content": htmltext,
+            "tags": [],
+            //TODO Need to pass locale from stripo
+            "locale": "en-us"
         }
-        var response = retrieveContentBlockContentFromHTML(htmltext);
-        var data = {
-            "Locale": usercontext.locale,
-            "MultiLine": response,
-            "FullHtmlContent": htmltext
-        };
+    };
 
-        saveurl = `${Configuration.EmailRenderApi.baseUrl}` + `${Configuration.EmailRenderApi.templatecontroller}`
-            + addQueryParametersToContentStackUrl(queryParameter);
-    }
+    var url = `${Configuration.ContentStack.baseUrl}` + 'content_types/' + `${usercontext.contentTypeId}` + '/entries/' + `${usercontext.entryId}` + '?version=' + `${usercontext.version}`;
+
+    //Save through tavisca API
+    // var queryParameter = {
+    //     contentType: usercontext.contentTypeId,
+    //     entryId: usercontext.entryId,
+    //     version:usercontext.version
+    // }
+    // var response = retrieveContentBlockContentFromHTML(htmltext);
+    // var data = {
+    //         "Locale": usercontext.locale,
+    //         "MultiLine": response,
+    //         "FullHtmlContent": htmltext 
+    // };
+
+    // var url = `${Configuration.EmailRenderApi.baseUrl}`+`${Configuration.EmailRenderApi.templatecontroller}`
+    //                                 + addQueryParametersToContentStackUrl(queryParameter);
+
     var headers = EMAILUtility.getContentStackRequestHeader();
 
-    var successCode = await EMAILUtility.createFetchRequest(saveurl, headers, "PUT", data);
+    var successCode = await EMAILUtility.createFetchRequest(url, headers, "PUT", data);
 
     if (successCode !== HTTP_SUCCESS_CODE) {
-        renderAlertHtml(true,'danger','Not Saved',[{'label':'ok','value':false,'functionName':'closeAlertModal'}]);
         throw new Error("Some exception occured");
     }
-    renderAlertHtml(true,'success','Saved',[{'label':'ok','value':true,'functionName':'closeAlertModal'}]);
-  //  alert("Template has been saved successfully");
+
+    alert("Template has been saved successfully");
 }
 
 var retrieveContentBlockContentFromHTML = function (html) {
