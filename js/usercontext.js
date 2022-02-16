@@ -1,3 +1,4 @@
+import { DECRYPTING_KEY } from './constant.js';
 var usercontext = {};
 
 var userContextConfiguration = {
@@ -6,13 +7,13 @@ var userContextConfiguration = {
     * @param: userContextObect.
     */
     loadUserContext: async function (userContextObject) {
-          var bytes = CryptoJS.AES.decrypt(userContextObject, 'secret key 123');
-          var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8)); 
-          usercontext = decryptedData;
-      //  usercontext = userContextObject;
+        //   var bytes = CryptoJS.AES.decrypt(userContextObject, DECRYPTING_KEY);
+        //   var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8)); 
+        //   usercontext = decryptedData;
+        usercontext = userContextObject;
         document.getElementById("templatename").innerText = usercontext.TemplateName;
         return "Ok";
     }
 }
 
-export {userContextConfiguration, usercontext }
+export { userContextConfiguration, usercontext }
