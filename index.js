@@ -397,12 +397,12 @@ async function previewTemplate(html) {
     ExternalPreviewPopup.openPreviewPopup(html);
 }
 
-document.querySelector("#saveButton").addEventListener('click', function (data) {
-    window.StripoApi.getTemplate(function (html, css) {
-        saveTemplateToContentStack(html)
-        isSaved = true;
-    })
-});
+//document.querySelector("#saveButton").addEventListener('click', function (data) {
+//    window.StripoApi.getTemplate(function (html, css) {
+//        saveTemplateToContentStack(html)
+//        isSaved = true;
+//    })
+//});
 
 document.querySelector('#previewButton').addEventListener('click', function () {
     previewBtnTriggered();
@@ -418,9 +418,10 @@ window.addEventListener("beforeunload", function (e) {
         return dialogText;
     }
 });
-window.addEventListener("keydown", event => {
+window.addEventListener("keydown", (event) => {
     if (event.isComposing || event.keyCode === 27) {
-        externalPreviewPopup.style.visibility = 'hidden';
+        backtoParentPage();
+        // externalPreviewPopup.style.visibility = 'hidden';
     }
     // do something
 });
