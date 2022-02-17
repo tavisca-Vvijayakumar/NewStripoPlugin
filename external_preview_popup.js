@@ -20,7 +20,7 @@ var externalPreviewPopup;
                             </button>\
                             <h4 class="modal-title">'+usercontext.TemplateName+'</h4>\
                             <button id="eseBtn" type="button" class="close modal-close-button">\
-                                <span>× esc</span>\
+                                <span>esc</span>\
                             </button>\
                         </div>\
                     </div>\

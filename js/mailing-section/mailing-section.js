@@ -9,8 +9,8 @@ function renderSendMailPopup() {
             <img class="cls-back-icon-to-editor" src="./img/svg-icons/back-svg.svg" alt="back">
         </button>
         <h4 class="modal-title"> Send Mail</h4>
-        <button id="eseBtnforSendEmail" type="button" class="modal-close-button">
-            <span>× esc</span>
+        <button id="eseBtnforSendEmail" type="button" class="modal-close-button" onclick="closeSendEmailPopup();">
+            <span>esc</span>
         </button>
     </div>
 </div>
