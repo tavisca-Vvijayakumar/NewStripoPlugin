@@ -12,10 +12,32 @@ var isSaved = false; var mergeTags;
 
 $(document).ready(function () {
     modifyLoaderSection();
+    document.getElementById('alert-modal').style.display = 'none';
     window.addEventListener("resize", () => {
         document.body.querySelector(".cls-left-side-bottom-loader").style.height = "";
     }, true
     );
+    document.getElementById('codeEditor').addEventListener('click', () => {
+        if (document.getElementById('codeEditor').classList.contains('cls-btn-pressed')) {
+            document.getElementById('codeEditor').classList.remove('cls-btn-pressed');
+        }
+        else {
+            document.getElementById('codeEditor').classList.add('cls-btn-pressed');
+        }
+    })
+    let setTimeInterval = setInterval(() => {
+        if (document.querySelector("#saveBtn") != null) {
+            console.log(document.querySelector("#saveBtn"));
+            //    clearInterval(setTimeInterval);
+            document.querySelector("#saveBtn").addEventListener('click', function (data) {
+                document.querySelector('.cls-alert-container').firstElementChild.remove();
+                window.StripoApi.getTemplate(function (html, css) {
+                    saveTemplateToContentStack(html)
+                    isSaved = true;
+                })
+            });
+        }
+    }, 1000);
     createCustomTiles();
 });
 var EMAILInitialization = {
@@ -344,10 +366,11 @@ async function saveTemplateToContentStack(htmltext) {
     var successCode = await EMAILUtility.createFetchRequest(url, headers, "PUT", data);
 
     if (successCode !== HTTP_SUCCESS_CODE) {
+        renderAlertHtml(true, 'danger', 'Not Saved', [{ 'label': 'ok', 'value': false, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
         throw new Error("Some exception occured");
     }
-
-    alert("Template has been saved successfully");
+    renderAlertHtml(true, 'success', 'Saved', [{ 'label': 'ok', 'value': true, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
+    /*alert("Template has been saved successfully");*/
 }
 
 var retrieveContentBlockContentFromHTML = function (html) {
@@ -406,55 +429,18 @@ window.addEventListener("keydown", event => {
  * Desc : Create Custom tiles
  */
 function createCustomTiles() {
-    let customTiles = `
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
+    let customTileValues = ["Header & Footer", "Email Body", "Orders", "Payment Summary", "Cross-Sell", "Marketing Blocks"];
+    let customTiles = "";
+    for (let tileValue of customTileValues) {
+        customTiles += `<div class="col-xs-6 col-sm-4 esdev-no-padding"> 
         <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
             <p>
                 <span class="es-icon-product cls-custom-title-block-icon"></span>
             </p>
-            Header & Footer
+            <span class="cls-custom-font-size-blocks">${tileValue}</span>
         </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Email Body
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Orders
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            <span class="cls-custom-font-size-blocks">Payment Summary</span>
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Cross-Sell
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Marketing Blocks
-        </div>
-    </div>`;
+    </div>`
+    }
     let checkBlockTiles = setInterval(() => {
         if (document.querySelector(".esdev-blocks") != null && document.querySelector(".cls-custom-tile-block") == null) {
             document.querySelector(".esdev-blocks").insertAdjacentHTML('beforeend', customTiles);
