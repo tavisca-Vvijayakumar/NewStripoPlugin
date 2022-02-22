@@ -25,6 +25,19 @@ $(document).ready(function () {
             document.getElementById('codeEditor').classList.add('cls-btn-pressed');
         }
     })
+    let setTimeInterval = setInterval(() => {
+        if (document.querySelector("#saveBtn") != null) {
+            console.log(document.querySelector("#saveBtn"));
+            //    clearInterval(setTimeInterval);
+            document.querySelector("#saveBtn").addEventListener('click', function (data) {
+                document.querySelector('.cls-alert-container').firstElementChild.remove();
+                window.StripoApi.getTemplate(function (html, css) {
+                    saveTemplateToContentStack(html)
+                    isSaved = true;
+                })
+            });
+        }
+    }, 1000);
     createCustomTiles();
 });
 var EMAILInitialization = {
@@ -357,7 +370,7 @@ async function saveTemplateToContentStack(htmltext) {
         throw new Error("Some exception occured");
     }
     renderAlertHtml(true, 'success', 'Saved', [{ 'label': 'ok', 'value': true, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
-   /* alert("Template has been saved successfully");*/
+    /*alert("Template has been saved successfully");*/
 }
 
 var retrieveContentBlockContentFromHTML = function (html) {

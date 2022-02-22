@@ -119,16 +119,15 @@ body {
 }
 
 .animated-background {
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
     animation-name: placeHolderShimmer;
     animation-timing-function: linear;
     background-color: #f6f7f8;
-    background: linear-gradient(to right, #eeeeee 8%, #e0dfdf 18%, #eeeeee 33%);
+    background: linear-gradient(to right, #eeeeee 8%, #bbbbbb 18%, #eeeeee 33%);
     background-size: 800px 104px;
     position: relative;
-    border-radius: 10px;
 }
 
 @keyframes placeHolderShimmer {
@@ -439,13 +438,6 @@ body {
     display: inline-block;
     margin: 10px 0px 0px 0px;
 }
-.cls-margin-top_15PercentAuto{
-    margin: 15% auto 0px auto;
-}
-.cls-btn-pressed{
-    background: rgb(234 234 234);
-    box-shadow: inset 0 3px 5px rgb(0 0 0 / 13%);
-}
 /*
 Css added as part of Tavem-825
 */
@@ -461,43 +453,38 @@ Css added as part of Tavem-825
 } */
 .tooltip {
     position: relative;
-    display: inline-block;    
-}
-.cls-custom-grey-color{
-    color: #9b9b9b;
-}
-.cls-custom-font-icon-size{
-    font-size: 70%;
-}
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 85px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 20px;
-    padding: 5px;
-    position: absolute;
-    z-index: 5;
-    top: 100%;
-    left: 50%;
-    margin-left: -50px;
-    font-size: 10px;
     display: inline-block;
 }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 85px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 20px;
+        padding: 5px;
+        position: absolute;
+        z-index: 5;
+        top: 100%;
+        left: 50%;
+        margin-left: -50px;
+        font-size: 10px;
+        display: inline-block;
+    }
 
 .cls-tool-tip-left {
     top: 10% !important;
     left: 275% !important;
 }
 
-.cls-tool-tip-left::after {
-    bottom: 32% !important;
-    left: -4% !important;
-    margin-left: -5px !important;
-    border-width: 5px !important;
-    transform: rotate(-88deg) !important;
-}
+    .cls-tool-tip-left::after {
+        bottom: 32% !important;
+        left: -4% !important;
+        margin-left: -5px !important;
+        border-width: 5px !important;
+        transform: rotate(-88deg) !important;
+    }
 
 .tooltip .tooltiptext::after {
     content: " ";
@@ -518,6 +505,11 @@ Css added as part of Tavem-825
     from {
         transform: rotate(0deg);
     }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 
     to {
         transform: rotate(360deg);
