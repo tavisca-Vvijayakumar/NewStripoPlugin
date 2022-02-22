@@ -6,186 +6,205 @@
     <title>Email Stripo Plugin App</title>
     <link href="./css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="external_preview_popup.css">
+    <link rel="stylesheet" href="./js/alert-modal/alert-modal.css" />
+    <link rel="stylesheet" href="./js/mailing-section/mailing-section.css" />
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <link href="./fonts/icons/css/fontawesome.min.css" rel="stylesheet">
+    <link href ="./fonts/icons/css/solid.min.css" rel="stylesheet">
+    <link href ="./fonts/icons/css/regular.min.css" rel="stylesheet">
+    <script src="./fonts/icons/js/fontawesome.min.js"></script>
+    <script src="./fonts/icons/js/solid.min.js"></script>
+    <script src="./fonts/icons/js/regular.min.js"></script>
 </head>
 
-    <body>
-        <!-- loader section begins -->
-        <div id="overlay">
-            <!-- <img src="./img/loader.gif" alt="Loading" style="position: fixed;left: 50%; top: 35%;" height="50" width="50" />Loading... -->
-            <div class="cls-externalSystemContainer">
-                <!-- <div class="cls-logo-img-section">
+<body>
+    <!-- loader section begins -->
+    <div id="overlay">
+        <!-- <img src="./img/loader.gif" alt="Loading" style="position: fixed;left: 50%; top: 35%;" height="50" width="50" />Loading... -->
+        <div class="cls-externalSystemContainer">
+            <!-- <div class="cls-logo-img-section">
                     <a class="cls-logo-link" href="javascript:;">
                         <img class="cls-logo-img" src="./img/imglogo.PNG" alt="logo">
                     </a>
                 </div> -->
-                <div class="cls-header-left-side-controls">
-                    <div class="animated-background cls-animate-bg-height"></div>
-                </div>    
-                <div class="cls-template-name-input-section cls-title-loader">
-                    <div class="animated-background cls-animate-bg-height"></div>
-                </div>                   
-                <div class="cls-header-right-side-controls">
-                    <div class="animated-background cls-animate-bg-height"></div>
-                </div> 
-                <div>
-                    <div class="animated-background cls-animate-bg-height"></div>
-                </div>                  
+            <div class="cls-header-left-side-controls">
+                <div class="animated-background cls-animate-bg-height"></div>
             </div>
-            <div class="cls-stripo-plugin-render">
-                <div class="cls-stripo-left-loader">
-                    <div>
-                        <span class="cls-tab-one-loader">
-                            <span class="animated-background cls-wave-loader-tab" ></span>                           
+            <div class="cls-template-name-input-section cls-title-loader">
+                <div class="animated-background cls-animate-bg-height"></div>
+            </div>
+            <div class="cls-header-right-side-controls">
+                <div class="animated-background cls-animate-bg-height"></div>
+            </div>
+            <div>
+                <div class="animated-background cls-animate-bg-height"></div>
+            </div>
+        </div>
+        <div class="cls-stripo-plugin-render">
+            <div class="cls-stripo-left-loader">
+                <div>
+                    <span class="cls-tab-one-loader">
+                        <span class="animated-background cls-wave-loader-tab"></span>
+                    </span>
+                    <span class="cls-tab-two-loader">
+                        <span class="animated-background cls-wave-loader-tab"></span>
+                    </span>
+                    <span class="cls-loader-box">
+                        <span class="animated-background cls-wave-loader-left-side-content"></span>
+                        <span class="cls-loader-icon-section">
+                            <img class="cls-loader-section-right-arrow" src="./img/svg-icons/right-arrow.svg">
                         </span>
-                        <span class="cls-tab-two-loader">
-                            <span class="animated-background cls-wave-loader-tab" ></span>
+                        <div class="cls-clear-float"></div>
+                    </span>
+                    <span class="cls-loader-box">
+                        <span class="animated-background cls-wave-loader-left-side-content"></span>
+                        <span class="cls-loader-icon-section">
+                            <img class="cls-loader-section-right-arrow" src="./img/svg-icons/down-arrow.svg">
                         </span>
-                        <span class="cls-loader-box" >
-                            <span class="animated-background cls-wave-loader-left-side-content" ></span>
-                            <span class="cls-loader-icon-section"> 
-                                <img class="cls-loader-section-right-arrow" src="./img/svg-icons/right-arrow.svg"> 
-                            </span>
-                            <div class="cls-clear-float"></div>
-                        </span>
-                        <span class="cls-loader-box" >
-                            <span class="animated-background cls-wave-loader-left-side-content" ></span>
-                            <span class="cls-loader-icon-section"> 
-                                <img class="cls-loader-section-right-arrow" src="./img/svg-icons/down-arrow.svg"> 
-                            </span>
-                            <div class="cls-clear-float"></div>
-                        </span>
-                        <div class="cls-loader-custom-tiles-container"> 
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>   
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>     
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>     
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div> 
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div> 
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div> 
-                            <div class="cls-loader-custom-tile">
-                                <span class="animated-background cls-loader-custom-tile-box"></span>
-                            </div>                       
+                        <div class="cls-clear-float"></div>
+                    </span>
+                    <div class="cls-loader-custom-tiles-container">
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
                         </div>
-                        <span class="cls-loader-box" >
-                            <span class="animated-background cls-wave-loader-left-side-content" ></span>
-                            <span class="cls-loader-icon-section"> 
-                                <img class="cls-loader-section-down-arrow" src="./img/svg-icons/right-arrow.svg"> 
-                            </span>
-                            <div class="cls-clear-float"></div>                           
-                        </span>                   
-                        <span class="cls-loader-box" >
-                            <span class="animated-background cls-wave-loader-left-side-content" ></span>
-                            <span class="cls-loader-icon-section"> 
-                                <img class="cls-loader-section-right-arrow" src="./img/svg-icons/right-arrow.svg"> 
-                            </span>
-                            <div class="cls-clear-float"></div>
-                        </span>
-                        <span class="cls-left-side-bottom-loader"></span>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
+                        <div class="cls-loader-custom-tile">
+                            <span class="animated-background cls-loader-custom-tile-box"></span>
+                        </div>
                     </div>
+                    <span class="cls-loader-box">
+                        <span class="animated-background cls-wave-loader-left-side-content"></span>
+                        <span class="cls-loader-icon-section">
+                            <img class="cls-loader-section-down-arrow" src="./img/svg-icons/right-arrow.svg">
+                        </span>
+                        <div class="cls-clear-float"></div>
+                    </span>
+                    <span class="cls-loader-box">
+                        <span class="animated-background cls-wave-loader-left-side-content"></span>
+                        <span class="cls-loader-icon-section">
+                            <img class="cls-loader-section-right-arrow" src="./img/svg-icons/right-arrow.svg">
+                        </span>
+                        <div class="cls-clear-float"></div>
+                    </span>
+                    <span class="cls-left-side-bottom-loader"></span>
                 </div>
-                <div class="cls-stripo-right-loader">
-                    <div class="cls-stripo-loader-container">
-                        <div class="cls-stripo-loader cls-customize-stripo-loader"></div>
-                        <span class="cls-stripo-loading-text">Loading</span>
-                    </div>                    
+            </div>
+            <div class="cls-stripo-right-loader">
+                <div class="cls-stripo-loader-container">
+                    <div class="cls-stripo-loader cls-customize-stripo-loader"></div>
+                    <span class="cls-stripo-loading-text">Loading</span>
                 </div>
             </div>
         </div>
-        <div id="messageBox" style="display: none;"></div>   <!-- Message box section ends -->
-        <!-- loader section ends -->
-        <!-- page section begins -->
-        <div id="rendered-html" class="cls-rendered-html">
-            <!-- header section begins -->
-            <div class="cls-externalSystemContainer">
-                <!-- <div class="cls-logo-img-section">
+    </div>
+    <div id="messageBox" style="display: none;"></div> <!-- Message box section ends -->
+    <!-- loader section ends -->
+    <!-- page section begins -->
+    <div id="rendered-html" class="cls-rendered-html">
+        <!-- header section begins -->
+        <div class="cls-externalSystemContainer">
+            <!-- <div class="cls-logo-img-section">
                     <a class="cls-logo-link" href="javascript:;">
                         <img class="cls-logo-img" src="./img/imglogo.PNG" alt="logo">
                     </a>
                 </div> -->
-                <div class="cls-header-left-side-controls">
-                    <button id="back" class="cls-left-icon cls-icon-customize-btn cls-custom-padding-back-icon btn tooltip" onclick="window.close();">
-                        <span class="tooltiptext cls-tool-tip-left">Leave</span>
-                        <img class="cls-icon-size-customization" src="./img/svg-icons/back-svg.svg" alt="back">
-                    </button>
-                    <button class="cls-undo-change-btn btn tooltip">
-                        <span class="tooltiptext">Undo</span>
-                        <img class="cls-icon-size-customization" src="./img/svg-icons/undo-svg.svg" alt="undo" >
-                    </button>
-                    <button class="cls-redo-change-btn btn tooltip">
-                        <span class="tooltiptext">Redo</span>
-                        <img class="cls-icon-size-customization"  src="./img/svg-icons/redo-svg.svg" alt="redo">
-                    </button>
-                </div>    
-                <div class="cls-template-name-input-section">
-                    <!-- <input type="text" class="cls-template-input-field" id="teamplatename" name="teloaderamplatename" readonly> -->
-                    <span class="cls-template-title" id="templatename"></span>
-                </div>                   
-                <div class="cls-header-right-side-controls">
-                    <button id="codeEditor" class="cls-icon-customize-btn btn tooltip cls-icon-margin-padding-customize">
-                        <span class="tooltiptext">Code Editor</span>
-                        <img  class="cls-icon-size-customization" src="./img/svg-icons/code-svg.svg" alt="codeeditor">
-                    </button>            
-                    <button id="previewButton" class="cls-icon-customize-btn btn tooltip cls-icon-margin-padding-customize">
-                        <span class="tooltiptext">Preview</span>
-                        <div id="btn-loader" class="cls-stripo-loader"></div>
-                        <img class="cls-icon-size-customization" id="preview-icon" src="./img/svg-icons/phone-svg.svg" alt="preview">
-                    </button>             
-                    <button id="btnemailsend" class="cls-icon-customize-btn btn tooltip cls-icon-margin-padding-customize">
-                        <span class="tooltiptext">Send Email</span>
-                        <img class="cls-icon-size-customization"  src="./img/svg-icons/mail-svg.svg" alt="send email">
-                    </button>
-                </div> 
-                <div>
-                    <button class="cls-save-btn btn tooltip" id="saveButton">
-                        <span class="tooltiptext">Save</span>Save
-                    </button>
-                </div>                  
+            <div class="cls-header-left-side-controls">
+                <button id="back" class="cls-left-icon cls-icon-customize-btn cls-custom-padding-back-icon btn tooltip"
+                        onclick="window.close();">
+                    <span class="tooltiptext cls-tool-tip-left">Leave</span>
+                    <img class="cls-icon-size-customization" src="./img/svg-icons/back-svg.svg" alt="back">
+                </button>
+                <button class="cls-undo-change-btn btn tooltip">
+                    <span class="tooltiptext">Undo</span>
+                    <img class="cls-icon-size-customization" src="./img/svg-icons/undo-svg.svg" alt="undo">
+                </button>
+                <button class="cls-redo-change-btn btn tooltip">
+                    <span class="tooltiptext">Redo</span>
+                    <img class="cls-icon-size-customization" src="./img/svg-icons/redo-svg.svg" alt="redo">
+                </button>
             </div>
-            <!-- header section ends -->
-            <div class="cls-stripo-plugin-render">
-                <div id="stripoSettingsContainer"></div>
-                <div id="stripoPreviewContainer"></div>
+            <div class="cls-template-name-input-section">
+                <!-- <input type="text" class="cls-template-input-field" id="teamplatename" name="teloaderamplatename" readonly> -->
+                <span class="cls-template-title" id="templatename"></span>
+            </div>
+            <div class="cls-header-right-side-controls">
+                <button id="codeEditor" class="cls-icon-customize-btn btn tooltip cls-icon-margin-padding-customize">
+                    <span class="tooltiptext">Code Editor</span>
+                    <img class="cls-icon-size-customization" src="./img/svg-icons/code-svg.svg" alt="codeeditor">
+                </button>
+                <button id="previewButton" class="cls-icon-customize-btn btn tooltip cls-icon-margin-padding-customize">
+                    <span class="tooltiptext">Preview</span>
+                    <div id="btn-loader" class="cls-stripo-loader"></div>
+                    <img class="cls-icon-size-customization" id="preview-icon" src="./img/svg-icons/phone-svg.svg"
+                         alt="preview">
+                </button>
+                <button id="btnemailsend" class="cls-icon-customize-btn btn tooltip cls-icon-margin-padding-customize"
+                        onclick="openSendEmailPopup()">
+                    <span class="tooltiptext">Send Email</span>
+                    <img class="cls-icon-size-customization" src="./img/svg-icons/mail-svg.svg" alt="send email">
+                </button>
+            </div>
+            <div>
+                <button class="cls-save-btn btn tooltip" id="saveButton"
+                        onclick="renderAlertHtml(true,'warning','Do you want to Save',[{'label':'No','value':false,id:'closeAlertModal',class:'','functionName':'closeAlertModal();'},{'label':'Yes','value':true,id:'saveBtn',class:'','functionName':'saveBtn();'}])">
+                    <span class="tooltiptext">Save</span>
+                    Save
+                </button>
             </div>
         </div>
-        <!-- page section ends -->
-    </body>
+        <!-- header section ends -->
+        <div class="cls-stripo-plugin-render">
+            <div id="stripoSettingsContainer"></div>
+            <div id="stripoPreviewContainer"></div>
+        </div>
+        <!-- mailing popup section begins-->
+        <div class="cls-mailing-section"></div>
+        <!-- mailing popup section ends-->
+        <!-- alert section begins -->
+        <div id="alert-modal"></div>
+        <!-- alert section ends -->
+    </div>
+    <!-- page section ends -->
+</body>
 
 <script type="module">
     import { EMAILConfiguration } from './js/configuration.js';
-        import { userContextConfiguration } from './js/usercontext.js';
-        import { usercontext } from './js/usercontext.js';
-        import { EMAILInitialization } from './index.js';
+    import { userContextConfiguration } from './js/usercontext.js';
+    import { usercontext } from './js/usercontext.js';
+    import { EMAILInitialization } from './index.js';
 
     //  Below commented code is for dev testing purpose
     // var message = {
@@ -205,12 +224,21 @@
     //     "clientId": "default",
     //     "version":"51"
     // }
+    // userContextConfiguration.loadUserContext(message).then(res => {
+    //         EMAILConfiguration.loadStripoConfiguration().then(respose => {
+    //             EMAILInitialization.loadTemplate(EMAILInitialization.initPlugin);
+    //         }).catch(err => {
+    //             console.log(err);
+    //         })
+    //     }).catch(err => { console.log(err) })
+
     /**
      * This method loads the stripo configuration first and then load the template.
      * @return stripo configuration from config.json.
+     * This method is used only in server.
     */
-   window.addEventListener("message", (event) => {
-        userContextConfiguration.loadUserContext(message).then(res => {
+    window.addEventListener("message", (event) => {
+        userContextConfiguration.loadUserContext(event.data).then(res => {
             EMAILConfiguration.loadStripoConfiguration().then(respose => {
                 EMAILInitialization.loadTemplate(EMAILInitialization.initPlugin);
             }).catch(err => {
@@ -218,7 +246,17 @@
             })
         }).catch(err => { console.log(err) })
     }, false);
-
+</script>
+<script type="application/javascript" src="./js/alert-modal/alert-modal.js"></script>
+<script type="module">
+    import {openSendEmailPopup,selectTemplateParameterOption,setSelectedTile,triggerSendMail,clickDropdown,clickTile,closeSendEmailPopup} from './js/mailing-section/mailing-section.js';
+    window.openSendEmailPopup = openSendEmailPopup;
+    window.selectTemplateParameterOption = selectTemplateParameterOption;
+    window.setSelectedTile = setSelectedTile;
+    window.triggerSendMail = triggerSendMail;
+    window.clickDropdown = clickDropdown;
+    window.clickTile = clickTile;
+    window.closeSendEmailPopup = closeSendEmailPopup;
 </script>
 
 </html>

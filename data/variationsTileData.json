@@ -1,0 +1,61 @@
+{
+    "variationsTileData" :   [
+        {
+            "tileTitle":"Option 1",
+            "options":[
+                { "label":"Flight Booking","status":true },
+                { "label":"CLP","status":true },
+                { "label":"Multi Pax + Infant","status":true },
+                { "label":"Mix and Match","status":true },
+                { "label":"Points+Cash" ,"status":true}
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "tileTitle":"Option 2",
+            "options":[
+                { "label":"Multiple hotels booked","status":true },
+                { "label":"Resort Fee applicable","status":true },
+                { "label":"Points+Cash","status":true },
+                { "label":"Online,Registered Flow","status":true }
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "tileTitle":"Option 3",
+            "options":[
+                { "label":"Cars Only","status":true },
+                { "label":"Points + Cash","status":true }
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "tileTitle":"Option 4",
+            "options":[
+                { "label":"All Products booked","status":true },
+                { "label":"CLP","status":true },
+                { "label":"Multipax + infant","status":true },
+                { "label":"Round-trip","status":true },
+                { "label":"Points + Cash" ,"status":true}
+            ],
+            "status":true,
+            "selected":false
+    
+        },
+        {
+            "tileTitle":"Option 5",
+            "options":[
+                { "label":"Voluntary Exchange Flight Confirmation","status":true },
+                { "label":"CLP based","status":true },
+                { "label":"Multi Pax + Infant","status":true },
+                { "label":"One-way","status":true },
+                { "label":"Points + Cash" ,"status":true}
+            ],
+            "status":true,
+            "selected":false
+        }
+    ]
+}

@@ -12,10 +12,19 @@ var isSaved = false; var mergeTags;
 
 $(document).ready(function () {
     modifyLoaderSection();
+    document.getElementById('alert-modal').style.display = 'none';
     window.addEventListener("resize", () => {
         document.body.querySelector(".cls-left-side-bottom-loader").style.height = "";
     }, true
     );
+    document.getElementById('codeEditor').addEventListener('click', () => {
+        if (document.getElementById('codeEditor').classList.contains('cls-btn-pressed')) {
+            document.getElementById('codeEditor').classList.remove('cls-btn-pressed');
+        }
+        else {
+            document.getElementById('codeEditor').classList.add('cls-btn-pressed');
+        }
+    })
     createCustomTiles();
 });
 var EMAILInitialization = {
@@ -84,7 +93,7 @@ var EMAILInitialization = {
                 extensions: [
                     {
                         globalName: "CustomBlockExtension",
-                        url: "https://tavisca-vvijayakumar.github.io/important_information_mainjs/importantInformationBlock.extension.js"
+                        url: "https://tavisca-vvijayakumar.github.io/important_information_mainjs/importantInformationBlock1.extension.js"
                     }
                 ],
                 "blockConfiguration": {
@@ -342,12 +351,13 @@ async function saveTemplateToContentStack(htmltext) {
     var headers = EMAILUtility.getContentStackRequestHeader();
 
     var successCode = await EMAILUtility.createFetchRequest(url, headers, "PUT", data);
-
+    document.querySelector('.cls-alert-container').firstElementChild.remove();
     if (successCode !== HTTP_SUCCESS_CODE) {
+        renderAlertHtml(true, 'danger', 'Not Saved', [{ 'label': 'ok', 'value': false, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
         throw new Error("Some exception occured");
     }
-
-    alert("Template has been saved successfully");
+    renderAlertHtml(true, 'success', 'Saved', [{ 'label': 'ok', 'value': true, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
+   /* alert("Template has been saved successfully");*/
 }
 
 var retrieveContentBlockContentFromHTML = function (html) {
@@ -374,12 +384,12 @@ async function previewTemplate(html) {
     ExternalPreviewPopup.openPreviewPopup(html);
 }
 
-document.querySelector("#saveButton").addEventListener('click', function (data) {
-    window.StripoApi.getTemplate(function (html, css) {
-        saveTemplateToContentStack(html)
-        isSaved = true;
-    })
-});
+//document.querySelector("#saveButton").addEventListener('click', function (data) {
+//    window.StripoApi.getTemplate(function (html, css) {
+//        saveTemplateToContentStack(html)
+//        isSaved = true;
+//    })
+//});
 
 document.querySelector('#previewButton').addEventListener('click', function () {
     previewBtnTriggered();
@@ -395,9 +405,10 @@ window.addEventListener("beforeunload", function (e) {
         return dialogText;
     }
 });
-window.addEventListener("keydown", event => {
+window.addEventListener("keydown", (event) => {
     if (event.isComposing || event.keyCode === 27) {
-        externalPreviewPopup.style.visibility = 'hidden';
+        backtoParentPage();
+        // externalPreviewPopup.style.visibility = 'hidden';
     }
     // do something
 });
@@ -406,55 +417,18 @@ window.addEventListener("keydown", event => {
  * Desc : Create Custom tiles
  */
 function createCustomTiles() {
-    let customTiles = `
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
+    let customTileValues = ["Header & Footer", "Email Body", "Orders", "Payment Summary", "Cross-Sell", "Marketing Blocks"];
+    let customTiles = "";
+    for (let tileValue of customTileValues) {
+        customTiles += `<div class="col-xs-6 col-sm-4 esdev-no-padding"> 
         <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
             <p>
                 <span class="es-icon-product cls-custom-title-block-icon"></span>
             </p>
-            Header & Footer
+            <span class="cls-custom-font-size-blocks">${tileValue}</span>
         </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Email Body
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Orders
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            <span class="cls-custom-font-size-blocks">Payment Summary</span>
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Cross-Sell
-        </div>
-    </div>
-    <div class="col-xs-6 col-sm-4 esdev-no-padding"> 
-        <div class="cls-custom-tile-block thumbnail esdev-block esd-extension-dnd-structure ui-draggable ui-draggable-handle" >
-            <p>
-                <span class="es-icon-product cls-custom-title-block-icon"></span>
-            </p>
-            Marketing Blocks
-        </div>
-    </div>`;
+    </div>`
+    }
     let checkBlockTiles = setInterval(() => {
         if (document.querySelector(".esdev-blocks") != null && document.querySelector(".cls-custom-tile-block") == null) {
             document.querySelector(".esdev-blocks").insertAdjacentHTML('beforeend', customTiles);
@@ -523,4 +497,16 @@ function modifyLoaderSection() {
         document.body.querySelector(".cls-left-side-bottom-loader").style.height = height > 0 ? `${height}px` : "";
     }
 }
+window.saveBtn = (()=>{
+    for(let element of document.querySelector('.cls-alert-container').firstElementChild.children){
+     element.remove();
+    }
+    document.querySelector('.cls-alert-container').firstElementChild.innerHTML = `
+    <div class="cls-stripo-loader cls-customize-stripo-loader cls-margin-top_15PercentAuto"></div>
+    <span class"cls-stripo-loading-text">Saving</span>`;
+     window.StripoApi.getTemplate(function (html, css) {
+         saveTemplateToContentStack(html)
+         isSaved = true;
+     });
+ })
 export { EMAILInitialization }

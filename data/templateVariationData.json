@@ -1,0 +1,306 @@
+{
+   "templateVariationData": [
+        {
+            "clientName" :"Augeo",
+            "programGroup":[
+                { 
+                    "programGroupName":"Augeo Banks 268",
+                    "status":true,
+                    "selected":false,
+                    "program":[
+                        {
+                            "programName":"HVFCU Rewards!",
+                            "status":true,
+                            "selected":false
+                        },
+                        {
+                            "programName":"Rewards!",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+                },
+                { 
+                    "programGroupName":"Augeo Banks 274",
+                    "status":true,
+                    "selected":false,
+                    "program":[
+                        {
+                            "programName":"Member Value Points",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+                },
+                {   
+                    "programGroupName":"Augeo Banks 277",
+                    "status":true,
+                    "selected":false,
+                    "program":[
+                        {
+                            "programName":"Points on Plastic",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+                }
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "clientName" :"BBT",
+            "programGroup":[
+                { 
+                    "programGroupName":"Truist Cash Rewards 1.5" ,
+                    "status":true,
+                    "selected":false,
+                    "program":[
+                        {
+                            "programName":"Truist Cash Rewards 1.5",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+               },
+                { 
+                    "programGroupName":"Truist Business Rewards" ,
+                    "status":true,
+                    "selected":false,
+                   "program":[
+                        {
+                            "programName":"Truist Business Rewards",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+                },
+                { 
+                    "programGroupName":"BBT Spectrum Cash rewards",
+                    "status":true,
+                    "selected":false,
+                   "program":[
+                        {
+                            "programName":"BB&T Spectrum Cash Rewards",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+                 }
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "clientName":"Citi Global",
+            "programGroup":[
+                {
+                     "programGroupName":"Citi APAC Card Services",
+                     "status":true,
+                     "selected":false,
+                    "program":[
+                        {
+                            "programName":"Card Services Rewards",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+                },
+                { 
+                    "programGroupName":"Citi APAC Diners",
+                    "status":true,
+                    "selected":false,
+                   "program":[
+                        {
+                            "programName":"Diners Club Dexus Program",
+                            "status":true,
+                            "selected":false
+                        },
+                        {
+                            "programName":"Diners Club Rewards",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+                },
+                { 
+                    "programGroupName":"Citi APAC Miles",
+                    "status":true,
+                    "selected":false,
+                   "program":[
+                        {
+                            "programName":"Citi Rewards",
+                            "status":true,
+                            "selected":false
+                        }
+                    ] 
+                }
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "clientName":"FIS",
+            "programGroup":[
+                { 
+                    "programGroupName":"FIS Bank of West",
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"Bank of the West",
+                        "status":true,
+                        "selected":false
+                        },
+                        {
+                            "programName":"Bank of the West - World",
+                            "status":true,
+                            "selected":false
+                        }
+                    ]
+                 },
+                { 
+                    "programGroupName":"FIS Beneficial Bank",
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"Beneficial Bank",
+                        "status":true,
+                        "selected":false
+                        }
+                    ]
+                },
+                { 
+                    "programGroupName":"FIS Central Bank",
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"FIS Central Bank",
+                        "status":true,
+                        "selected":false
+                        }
+                    ] 
+                }
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "clientName":"JP Morgan Chase",
+            "programGroup":[
+                { 
+                    "programGroupName":"Chase Rewards Travel",
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"Chase Travel Rewards",
+                        "status":true,
+                        "selected":false
+                        }
+                    ] 
+                 },
+                { 
+                    "programGroupName":"Ultimate Rewards Cash",
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"Chase Ultimate Rewards",
+                        "status":true,
+                        "selected":false
+                        }
+                    ] 
+                },
+                { 
+                    "programGroupName":"Ultimate Rewards Points" ,
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"Chase Ultimate Rewards",
+                        "status":true,
+                        "selected":false
+                        },
+                        {
+                            "programName":"Chase Ultimate Rewards - Rearden Bookings",
+                            "status":true,
+                            "selected":false
+                        },
+                        {
+                            "programName":" The Luxury Hotel & Resort Collection",
+                            "status":true,
+                            "selected":false
+                        }                  
+                    ]               
+                }
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "clientName":"Kobie",
+            "programGroup":[
+                { 
+                    "programGroupName":"Kobie Generic" ,
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"BankMiles",
+                        "status":true,
+                        "selected":false
+                        }
+                    ]
+                },
+                { 
+                    "programGroupName":"First Citizens Bank" ,
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"First Citizens Rewards",
+                        "status":true,
+                        "selected":false
+                        }
+                    ]
+                }
+            ],
+            "status":true,
+            "selected":false
+        },
+        {
+            "clientName":"MasterCard",
+            "programGroup":[
+                { 
+                    "programGroupName":"Banmex Beyond",
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"Banmex Beyond",
+                        "status":true,
+                        "selected":false
+                        }
+                    ]
+                },
+                { 
+                    "programGroupName":"MasterCard - HSBC" ,
+                    "status":true,
+                    "selected":false,
+                    "program" : [
+                        {
+                        "programName":"HSBC Rewards Center",
+                        "status":true,
+                        "selected":false
+                        }
+                    ]
+                }
+            ],
+            "status":true,
+            "selected":false
+        }
+    ]
+}

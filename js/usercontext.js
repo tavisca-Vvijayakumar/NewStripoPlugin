@@ -6,10 +6,13 @@ var userContextConfiguration = {
     * @param: userContextObect.
     */
     loadUserContext: async function (userContextObject) {
-          var bytes = CryptoJS.AES.decrypt(userContextObject, 'secret key 123');
-          var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8)); 
-          usercontext = decryptedData;
-      //  usercontext = userContextObject;
+        // The Below 3 line code for live
+            var bytes = CryptoJS.AES.decrypt(userContextObject, 'secret key 123');
+            var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8)); 
+            usercontext = decryptedData;
+            
+        // The below 1 line code for dev 
+           //  usercontext = userContextObject;
         document.getElementById("templatename").innerText = usercontext.TemplateName;
         return "Ok";
     }

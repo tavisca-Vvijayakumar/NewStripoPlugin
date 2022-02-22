@@ -6,11 +6,11 @@
     right: 0;
     left: 0;
     z-index: 1050;
-    font-family: sans-serif;
     transform: translate(0,-100%);
     transition: transform .3s ease-out,-webkit-transform .3s ease-out;
     overflow-y: scroll ;
     border-bottom: 1px solid #ddd;
+    overflow-x: hidden;
 }
 
 .modal-container {
@@ -80,9 +80,49 @@
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     padding: 2% 3%;
-    gap:2%
+    gap:2%;
+    width: 100%;
+    /* position: absolute; */
+    /* top: 10%; */
 }
-
+.cls-preview-mail-form-show{
+    transform: translate(0%,0%);
+    animation: preview-mail-show 1s;
+}
+.cls-preview-mail-form-hide{
+    transform: translate(-100%,0%);
+    animation: preview-mail-hide 1s;
+}
+.cls-preview-template-page-hide{   
+    transform: translate(100%,0%);
+    display: none;
+    /* animation: preview-hide 1s; */
+}
+.cls-preview-template-page-show{
+    transform: translate(0%,0%);
+    animation: preview-show 1s;
+}
+.cls-preview-mail-form{
+    position: absolute;
+    top:10%;
+    width: 100%;
+}
+@keyframes preview-mail-hide {
+    0%{transform: translate(0%,0%);}
+    100%{transform: translate(-100%,0%);}
+}
+@keyframes preview-mail-show {
+    from{transform: translate(-100%,0%);}
+    to{transform: translate(0%,0%);}
+}
+@keyframes preview-show {
+    from{transform: translate(100%,0%);}
+    to{transform: translate(0%,0%);}
+}
+@keyframes preview-hide {
+    from{transform: translate(0%,0%);}
+    to{transform: translate(100%,0%);}
+}
 .preview-col-sm-8 {
     grid-column: span 8;
 }
@@ -122,12 +162,9 @@
     border-radius: 30px;
     padding: 2px;
 }
-.cls-dummy-title-section{
+.cls-title-section{
     margin: 0px 0px 0px 5px;
-    width: 200px;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 3%;
+    width: 100%;
     padding: 2px;
 }
 .cls-dummy-title-width-reduced{
@@ -174,7 +211,14 @@
 .cls-popup-show{ 
   transform: translate(0,0%)!important;
 }
-
+.cls-next-arrow-section{
+    position: absolute;
+    right: 20%;
+    transition: 1s;
+}
+.cls-send-mail-btn:hover .cls-next-arrow-section{
+    right: 10%;
+}
 /**
  * Desc : Media query included for responsive screen
  **/

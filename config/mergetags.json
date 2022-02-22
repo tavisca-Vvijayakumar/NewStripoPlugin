@@ -1,43 +1,113 @@
-    [{
-    "category": "Flight detail",
-    "entries": [
-        {
-            "label": "Flight Name",
-            "value": "{{FlightName}}"
-        },
-        {
-            "label": "Flight Number",
-            "value": "{{FlightNumber}}"
-        },
-        {
-            "label": "Depart",
-            "value": "{{Departat}}"
-        },
-        {
-            "label": "Arrive",
-            "value": "{{Arriveat}}"
-        },
-
-        {
-            "label": "Airport/Terminal",
-            "value": "{{Airport/Terminal}}"
-        }
-    ]
-},
-{
-    "category": "Hotel detail",
-    "entries": [
-        {
-            "label": "Hotel Name",
-            "value": "air india"
-        },
-        {
-            "label": "Hotel Address",
-            "value": "EK 345"
-        },
-        {
-            "label": "Landmark",
-            "value": "10 0ct 21/10:30"
-        }
-    ]
-}]
+[
+    {
+        "category": "Flight detail",
+        "entries": [
+            {
+                "label": "Flight Name",
+                "value": "{{FlightName}}"
+            },
+            {
+                "label": "Flight Number",
+                "value": "{{FlightNumber}}"
+            },
+            {
+                "label": "Depart",
+                "value": "{{Departat}}"
+            },
+            {
+                "label": "Arrive",
+                "value": "{{Arriveat}}"
+            },
+            {
+                "label": "Airport/Terminal",
+                "value": "{{Airport/Terminal}}"
+            }
+        ]
+    },
+    {
+        "category": "Hotel detail",
+        "entries": [
+            {
+                "label": "Hotel Name",
+                "value": "air india"
+            },
+            {
+                "label": "Hotel Address",
+                "value": "EK 345"
+            },
+            {
+                "label": "Landmark",
+                "value": "10 0ct 21/10:30"
+            }
+        ]
+    },
+    {
+        "category": "Email Body Block",
+        "entries": [
+            {
+                "label": "First Name",
+                "value": "firstname"
+            },
+            {
+                "label": "Last Name",
+                "value": "lastname"
+            },
+            {
+                "label": "Program name",
+                "value": "programname"
+            },
+            {
+                "label": "Program Phone",
+                "value": "programphone"
+            },
+            {
+                "label": "Original Itinerary Booking Date (BookDate)",
+                "value": "bookingdate"
+            },
+            {
+                "label": "New Itinerary date details",
+                "value": "itinerarydate"
+            },
+            {
+                "label": "Reservation Updated date (ResUpdateDate)",
+                "value": "resupdateddate"
+            },
+            {
+                "label": "Airline Contact Number  : Chase specific",
+                "value": "airlinecontactnumber"
+            },
+            {
+                "label": "Airline Locator (Airline Reference Number)",
+                "value": "airlinelocator"
+            },
+            {
+                "label": "Agency Contact Number",
+                "value": "agencycontactnumber"
+            },
+            {
+                "label": "Trip ID",
+                "value": "tripid"
+            },
+            {
+                "label": "Airline Brand",
+                "value": "airlinebrand"
+            },
+            {
+                "label": "Departure Date",
+                "value": "departuredate"
+            },
+            {
+                "label": "Case Number (Need to confirm)",
+                "value": "casenumber"
+            },
+            {
+                "label": "Password (Password Reset)",
+                "value": "passwordreset"
+            },
+            {
+                "label": "link for Password reset (Password Reset)",
+                "value": "passwordresetlink"
+            }
+        ]
+    }
+]
