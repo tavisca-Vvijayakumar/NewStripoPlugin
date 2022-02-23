@@ -356,7 +356,14 @@ async function saveTemplateToContentStack(htmltext) {
         renderAlertHtml(true, 'danger', 'Not Saved', [{ 'label': 'ok', 'value': false, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
         throw new Error("Some exception occured");
     }
-    renderAlertHtml(true, 'success', 'Saved', [{ 'label': 'ok', 'value': true, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
+    else if(successCode == HTTP_SUCCESS_CODE){
+
+        window.opener.postMessage(JSON.stringify({"eventData":{"pass":true}}), '*');
+
+        renderAlertHtml(true, 'success', 'Saved', [{ 'label': 'ok', 'value': true, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
+
+    }
+  //  renderAlertHtml(true, 'success', 'Saved', [{ 'label': 'ok', 'value': true, id: 'closeAlertModal', class: '', 'functionName': 'closeAlertModal()' }]);
    /* alert("Template has been saved successfully");*/
 }
 
