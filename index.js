@@ -93,7 +93,7 @@ var EMAILInitialization = {
                 extensions: [
                     {
                         globalName: "CustomBlockExtension",
-                        url: "https://tavisca-vvijayakumar.github.io/important_information_mainjs/importantInformationBlock1.extension.js"
+                        url: "https://tavisca-vvijayakumar.github.io/important_information_mainjs/importantInformationBlock.extension2.js"
                     }
                 ],
                 "blockConfiguration": {
